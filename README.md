@@ -1,3 +1,8 @@
 # Data structures and algorithms
 
-Code for CS 253
+Sample code for CS 253.
+
+data structures implemented:
+
+* Node
+* Stack
