@@ -13,15 +13,23 @@ class Stack implements StackInterface {
 		size++;
 	}
 
-	public int pop() {
-		int i = top.getData();
-		top = top.getNext();
-		size--;
-		return i;
+	public int pop() throws EmptyStackException {
+		if (this.empty()) {
+			throw new EmptyStackException("No Nodes remaining.");
+		} else {
+			int i = top.getData();
+			top = top.getNext();
+			size--;
+			return i;
+		}
 	}
 
-	public int ontop() {
-		return top.getData();
+	public int ontop() throws EmptyStackException {
+		if (this.empty()) {
+			throw new EmptyStackException("No Nodes remaining.");
+		} else {
+			return top.getData();
+		}
 	}
 
 	public int size() {
