@@ -8,8 +8,7 @@ class Stack implements StackInterface {
 	}
 
 	public void push(int data) {
-		Node newNode = new Node(data, top);
-		top = newNode;
+		top = new Node(data, top);
 		size++;
 	}
 
@@ -17,10 +16,10 @@ class Stack implements StackInterface {
 		if (this.empty()) {
 			throw new EmptyStackException("No Nodes remaining.");
 		} else {
-			int i = top.getData();
+			int topValue = top.getData();
 			top = top.getNext();
 			size--;
-			return i;
+			return topValue;
 		}
 	}
 
