@@ -5,8 +5,7 @@ public class Queue implements QueueInterface {
 
 	public Queue() {
 		size = 0;
-		front = null;
-		rear = null;
+		front = rear = null;
 	}
 
 	public void enqueue(int data) {
