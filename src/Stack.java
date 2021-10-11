@@ -36,6 +36,6 @@ class Stack implements StackInterface {
 	}
 
 	public boolean empty() {
-		return (top == null);
+		return top == null;
 	}
 }
