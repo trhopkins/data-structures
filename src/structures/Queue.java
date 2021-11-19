@@ -1,3 +1,5 @@
+package structures;
+
 public class Queue implements QueueInterface {
 	private Node front;
 	private Node rear;

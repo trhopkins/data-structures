@@ -1,3 +1,5 @@
+package structures;
+
 public class LinkedList implements LinkedListInterface {
 	private Node head;
 

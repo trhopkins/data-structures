@@ -1,3 +1,5 @@
+package structures;
+
 public interface QueueInterface {
 	public void enqueue(int data);
 	public int dequeue();

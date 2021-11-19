@@ -1,3 +1,5 @@
+package structures;
+
 class Stack implements StackInterface {
 	private Node top;
 	private int size;

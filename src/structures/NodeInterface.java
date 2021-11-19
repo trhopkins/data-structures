@@ -1,3 +1,5 @@
+package structures;
+
 public interface NodeInterface {
 	public int getData();
 	public Node getNext();

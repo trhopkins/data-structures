@@ -1,3 +1,5 @@
+package structures;
+
 public class Node implements NodeInterface {
 	int data;
 	Node next;
