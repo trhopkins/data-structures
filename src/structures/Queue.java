@@ -6,6 +6,7 @@ import interfaces.QueueInterface;
  * Queue ADT using linked Node. Currently supports integers only.
  * @author Travis Hopkins
  * @version 0.0.1
+ * @see {@link https://www.baeldung.com/java-queue}
  */
 public class Queue implements QueueInterface {
 	private Node front;
@@ -24,7 +25,7 @@ public class Queue implements QueueInterface {
 	 * Inserts a Node as the new rear of this Queue.
 	 * @param data to add to Queue
 	 */
-	public void enqueue(int data) {
+	public void enqueue(int data) { // O(1)
 		Node newNode = new Node(data, null);
 		if (this.empty()) {
 			front = newNode; // gotta start somewhere
@@ -39,7 +40,7 @@ public class Queue implements QueueInterface {
 	 * Removes/returns/reassigns the front.
 	 * @return front Node's data
 	 */
-	public int dequeue() {
+	public int dequeue() { // O(1)
 		int frontValue = front.getData();
 		front = front.getNext();
 		size--; // placed before empty() due to size check
@@ -53,7 +54,7 @@ public class Queue implements QueueInterface {
 	 * Like dequeue() but without modifying the Queue.
 	 * @return front Node's data
 	 */
-	public int front() {
+	public int front() { // O(1)
 		return front.getData();
 	}
 
@@ -61,7 +62,7 @@ public class Queue implements QueueInterface {
 	 * Node count.
 	 * @return the Number of Nodes in the Queue
 	 */
-	public int size() {
+	public int size() { // O(1)
 		return size;
 	}
 
@@ -69,14 +70,14 @@ public class Queue implements QueueInterface {
 	 * Check if this Queue has any Nodes.
 	 * @return true if no Nodes
 	 */
-	public boolean empty() {
+	public boolean empty() { // O(1)
 		return size == 0; // front == null also works
 	}
 
 	/**
 	 * Prints each Node on their own line. Simiar to toString().
 	 */
-	public void traverse() {
+	public void traverse() { // O(n)
 		Node current = front;
 		while (current != null) {
 			System.out.println(current);
@@ -87,7 +88,7 @@ public class Queue implements QueueInterface {
 	/**
 	 * @return info about each Node on its own line.
 	 */
-	public String toString() {
+	public String toString() { // O(n)
 		Node current = front;
 		String info = "";
 		while (current != null) {

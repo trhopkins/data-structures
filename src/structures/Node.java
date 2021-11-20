@@ -24,35 +24,35 @@ public class Node implements NodeInterface {
 	/**
 	 * @return Node data
 	 */
-	public int getData() {
+	public int getData() { // O(1)
 		return data;
 	}
 
 	/**
 	 * @return following Node
 	 */
-	public Node getNext() {
+	public Node getNext() { // O(1)
 		return next;
 	}
 
 	/**
 	 * @param data to assign this Node
 	 */
-	public void setData(int data) {
+	public void setData(int data) { // O(1)
 		this.data = data;
 	}
 
 	/**
 	 * @param next Node to point to
 	 */
-	public void setNext(Node next) {
+	public void setNext(Node next) { // O(1)
 		this.next = next;
 	}
 
 	/**
 	 * @return data stored in this Node, type agnostic
 	 */
-	public String toString() {
+	public String toString() { // O(1)
 		return String.valueOf(data);
 	}
 }

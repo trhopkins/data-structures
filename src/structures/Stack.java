@@ -6,10 +6,11 @@ import interfaces.StackInterface;
  * Stack ADT using linked integer Nodes.
  * @author Travis Hopkins
  * @version 0.0.1
+ * @see {@link https://www.baeldung.com/java-stack}
  */
 public class Stack implements StackInterface {
 	private Node top; // reference to only accessible value
-	private int size; // prevents O(n) size()
+	private int size; // prevents O(n) size() operation
 
 	/**
 	 * Constructor. Starts empty.
@@ -23,7 +24,7 @@ public class Stack implements StackInterface {
 	 * Add a new Node to the top of the Stack, covering Nodes below.
 	 * @param data to add
 	 */
-	public void push(int data) {
+	public void push(int data) { // O(1)
 		top = new Node(data, top);
 		size++;
 	}
@@ -32,7 +33,7 @@ public class Stack implements StackInterface {
 	 * Removes/returns the top Node's value.
 	 * @return data of top
 	 */
-	public int pop() {
+	public int pop() { // O(1)
 		int topValue = top.getData();
 		top = top.getNext();
 		size--; // consider throwing an error for an empty stack?
@@ -43,7 +44,7 @@ public class Stack implements StackInterface {
 	 * Like pop(), but doesn't remove the top Node.
 	 * @return data of top
 	 */
-	public int ontop() {
+	public int ontop() { // O(1)
 		return top.getData();
 	}
 
@@ -51,7 +52,7 @@ public class Stack implements StackInterface {
 	 * Count of Nodes.
 	 * @return size
 	 */
-	public int size() {
+	public int size() { // O(1)
 		return size;
 	}
 
@@ -59,14 +60,14 @@ public class Stack implements StackInterface {
 	 * Check if the Stack has any Nodes.
 	 * @return true if empty
 	 */
-	public boolean empty() {
+	public boolean empty() { // O(1)
 		return top == null; // size == 0 also works
 	}
 
 	/**
 	 * Prints each Node on its own line. Similar to toString().
 	 */
-	public void traverse() {
+	public void traverse() { // O(n)
 		Stack tmp = new Stack();
 		while (!empty()) {
 			System.out.println(top.toString());
@@ -80,7 +81,7 @@ public class Stack implements StackInterface {
 	/**
 	 * @return each Node's information on its own line.
 	 */
-	public String toString() {
+	public String toString() { // O(n)
 		Stack tmp = new Stack();
 		String info = "";
 		while (!empty()) {
