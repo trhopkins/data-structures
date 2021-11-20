@@ -56,4 +56,12 @@ public class LinkedList implements LinkedListInterface {
 	public boolean empty() {
 		return head == null;
 	}
+
+	public void traverse() {
+		Node current = head;
+		while (current != null) {
+			System.out.println(current);
+			current = current.getNext();
+		}
+	}
 }

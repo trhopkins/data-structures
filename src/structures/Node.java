@@ -24,4 +24,8 @@ public class Node implements NodeInterface {
 	public void setNext(Node next) {
 		this.next = next;
 	}
+
+	public String toString() {
+		return String.valueOf(data);
+	}
 }

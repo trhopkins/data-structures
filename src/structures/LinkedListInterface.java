@@ -7,4 +7,5 @@ public interface LinkedListInterface {
 	public int[] getKeys();
 	public int size();
 	public boolean empty();
+	public void traverse();
 }

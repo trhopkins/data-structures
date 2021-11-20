@@ -1,6 +1,6 @@
 package structures;
 
-class Stack implements StackInterface {
+public class Stack implements StackInterface {
 	private Node top;
 	private int size;
 
@@ -31,5 +31,16 @@ class Stack implements StackInterface {
 
 	public boolean empty() {
 		return top == null;
+	}
+
+	public void traverse() {
+		Stack tmp = new Stack();
+		while (!empty()) {
+			System.out.println(top);
+			tmp.push(this.pop());
+		}
+		while (!tmp.empty()) {
+			this.push(tmp.pop());
+		}
 	}
 }

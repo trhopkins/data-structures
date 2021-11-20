@@ -6,4 +6,5 @@ public interface QueueInterface {
 	public int front();
 	public int size();
 	public boolean empty();
+	public void traverse();
 }

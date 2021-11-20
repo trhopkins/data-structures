@@ -11,17 +11,22 @@ public class Queue implements QueueInterface {
 	}
 
 	public void enqueue(int data) {
+		Node newNode = new Node(data, null);
 		if (this.empty()) {
-			front = rear = new Node(data, rear);
+			front = newNode;
 		} else {
-			front = new Node(data, rear);
+			rear.setNext(newNode);
 		}
+		rear = newNode;
 		size++;
 	}
 
 	public int dequeue() {
 		int frontValue = front.getData();
 		front = front.getNext();
+		if (this.empty()) {
+			rear = null;
+		}
 		size--;
 		return frontValue;
 	}
@@ -36,5 +41,13 @@ public class Queue implements QueueInterface {
 
 	public boolean empty() {
 		return size == 0;
+	}
+
+	public void traverse() {
+		Node current = front;
+		while (current != null) {
+			System.out.println(current);
+			current = current.getNext();
+		}
 	}
 }
