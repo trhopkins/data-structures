@@ -1,4 +1,4 @@
-package structures;
+package interfaces;
 
 public interface QueueInterface {
 	public void enqueue(int data);

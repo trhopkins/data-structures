@@ -1,5 +1,7 @@
 package structures;
 
+import interfaces.NodeInterface;
+
 public class Node implements NodeInterface {
 	int data;
 	Node next;

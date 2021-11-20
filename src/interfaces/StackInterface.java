@@ -1,4 +1,4 @@
-package structures;
+package interfaces;
 
 public interface StackInterface {
 	public void push(int data);

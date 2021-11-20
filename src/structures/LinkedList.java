@@ -1,5 +1,7 @@
 package structures;
 
+import interfaces.LinkedListInterface;
+
 public class LinkedList implements LinkedListInterface {
 	private Node head;
 

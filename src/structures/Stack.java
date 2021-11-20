@@ -1,5 +1,7 @@
 package structures;
 
+import interfaces.StackInterface;
+
 public class Stack implements StackInterface {
 	private Node top;
 	private int size;
