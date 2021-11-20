@@ -70,11 +70,11 @@ public class Stack implements StackInterface {
 	public void traverse() { // O(n)
 		Stack tmp = new Stack();
 		while (!empty()) {
-			System.out.println(top.toString());
-			tmp.push(this.pop());
+			System.out.println(top);
+			tmp.push(pop());
 		}
 		while (!tmp.empty()) {
-			this.push(tmp.pop());
+			push(tmp.pop());
 		}
 	}
 

@@ -27,8 +27,9 @@ public class Queue implements QueueInterface {
 	 */
 	public void enqueue(int data) { // O(1)
 		Node newNode = new Node(data, null);
-		if (this.empty()) {
-			front = newNode; // gotta start somewhere
+
+		if (empty()) {
+			front = newNode;
 		} else {
 			rear.setNext(newNode);
 		}
@@ -44,7 +45,7 @@ public class Queue implements QueueInterface {
 		int frontValue = front.getData();
 		front = front.getNext();
 		size--; // placed before empty() due to size check
-		if (this.empty()) {
+		if (empty()) {
 			rear = null;
 		}
 		return frontValue;

@@ -62,8 +62,8 @@ public class LinkedList implements LinkedListInterface {
 	 * Transforms this LinkedList into an array.
 	 * @return array of data corresponding to this LinkedList
 	 */
-	public int[] getKeys() { // O(n)
-		int[] keys = new int[this.size()];
+  public int[] getKeys() {
+		int[] keys = new int[size()];
 		Node current = head;
 		for (int i=0; i<keys.length; i++) {
 			keys[i] = current.getData();
