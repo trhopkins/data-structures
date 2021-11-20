@@ -39,10 +39,10 @@ public class Stack implements StackInterface {
 		Stack tmp = new Stack();
 		while (!empty()) {
 			System.out.println(top);
-			tmp.push(this.pop());
+			tmp.push(pop());
 		}
 		while (!tmp.empty()) {
-			this.push(tmp.pop());
+			push(tmp.pop());
 		}
 	}
 }
