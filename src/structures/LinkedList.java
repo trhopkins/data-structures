@@ -5,7 +5,7 @@ import interfaces.LinkedListInterface;
 /**
  * LinkedList ADT using integer Nodes.
  * @author Travis Hopkins
- * @version 0.0.1
+ * @version 1.0.0
  * @see {@link https://www.baeldung.com/java-linkedlist}
  */
 public class LinkedList implements LinkedListInterface {
@@ -23,22 +23,17 @@ public class LinkedList implements LinkedListInterface {
 	 * 'cons' operation. Adds a new Node to the front of the list.
 	 * @param data to add, replacing previous head
 	 */
-	public void insert(int data) { // O(1)
+	public void insertFirst(int data) { // O(1)
 		head = new Node(data, head);
 	}
 
 	/**
-	 * Removes Node wih data matching a given key.
-	 * @param key Node data to search for and remove if found
+	 * Removes/reassigns head Node.
 	 */
-	public void delete(int key) { // O(n)
-		Node current = head;
-		Node previous = null;
-		while (current != null && current.getData() != key) {
-			previous = current;
-			current = current.getNext();
+	public void deleteFirst() { // O(1)
+		if (!empty()) {
+			head = head.getNext();
 		}
-		previous.setNext(current.getNext()); // garbage collected later
 	}
 
 	/**
@@ -56,20 +51,6 @@ public class LinkedList implements LinkedListInterface {
 			}
 		}
 		return false; // reached end of LinkedList
-	}
-
-	/**
-	 * Transforms this LinkedList into an array.
-	 * @return array of data corresponding to this LinkedList
-	 */
-  public int[] getKeys() {
-		int[] keys = new int[size()];
-		Node current = head;
-		for (int i=0; i<keys.length; i++) {
-			keys[i] = current.getData();
-			current = current.getNext();
-		}
-		return keys;
 	}
 
 	/**
@@ -103,6 +84,20 @@ public class LinkedList implements LinkedListInterface {
 			System.out.println(current);
 			current = current.getNext();
 		}
+	}
+
+	/**
+	 * Transforms this LinkedList into an array.
+	 * @return array of data corresponding to this LinkedList
+	 */
+  public int[] getKeys() { // for debugging
+		int[] keys = new int[size()];
+		Node current = head;
+		for (int i=0; i<keys.length; i++) {
+			keys[i] = current.getData();
+			current = current.getNext();
+		}
+		return keys;
 	}
 
 	/**

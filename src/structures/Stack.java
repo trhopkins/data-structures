@@ -5,7 +5,7 @@ import interfaces.StackInterface;
 /**
  * Stack ADT using linked integer Nodes.
  * @author Travis Hopkins
- * @version 0.0.1
+ * @version 1.0.0
  * @see {@link https://www.baeldung.com/java-stack}
  */
 public class Stack implements StackInterface {

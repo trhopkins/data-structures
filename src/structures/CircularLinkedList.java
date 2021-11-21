@@ -2,6 +2,12 @@ package structures;
 
 import interfaces.LinkedListInterface;
 
+/**
+ * CircularLinkedList ADT using linked integer Nodes.
+ * @author Travis Hopkins
+ * @version 1.0.0
+ * @see {@link https://www.baeldung.com/java-circular-linked-list}
+ */
 public class CircularLinkedList implements LinkedListInterface {
 	private Node tail;
 
@@ -9,7 +15,7 @@ public class CircularLinkedList implements LinkedListInterface {
 		tail = null;
 	}
 
-	public void insert(int data) {
+	public void insertFirst(int data) {
 		if (empty()) {
 			Node newNode = new Node(data, null);
 			tail = newNode;
@@ -20,8 +26,26 @@ public class CircularLinkedList implements LinkedListInterface {
 		}
 	}
 
-	public void delete(int key) {
-		;
+	public void insertLast(int data) {
+		if (empty()) {
+			Node newNode = new Node(data, null);
+			tail = newNode;
+			newNode.setNext(newNode);
+		} else {
+			Node newNode = new Node(data, tail.getNext());
+			tail.setNext(newNode);
+			tail = newNode;
+		}
+	}
+
+	public void deleteFirst() {
+		if (!empty()) {
+			if (size() == 1) {
+				tail = null;
+			} else {
+				tail.setNext(tail.getNext().getNext());
+			}
+		}
 	}
 
 	public boolean search(int key) {
@@ -57,7 +81,17 @@ public class CircularLinkedList implements LinkedListInterface {
 		return tail == null;
 	}
 
-	public int[] getKeys() {
+	public void traverse() {
+		if (!empty()) {
+			Node current = tail;
+			do {
+				current = current.getNext();
+				System.out.println(current);
+			} while (current != tail);
+		}
+	}
+
+	public int[] getKeys() { // for debugging
 		int[] keys = new int[size()];
 		if (!empty()) {
 			Node current = tail;
@@ -71,23 +105,17 @@ public class CircularLinkedList implements LinkedListInterface {
 		return keys;
 	}
 
-	public void traverse() {
-		if (!empty()) {
-			Node current = tail;
-			do {
-				current = current.getNext();
-				System.out.println(current);
-			} while (current != tail);
-		}
-	}
-
 	public String toString() {
 		String info = "";
 		if (!empty()) {
 			Node current = tail;
 			do {
 				current = current.getNext();
-				info += String.valueOf(current) + "\n";
+				if (current != tail) {
+					info += String.valueOf(current) + "\n";
+				} else {
+					info += String.valueOf(current);
+				}
 			} while (current != tail);
 		} else {
 			info += "empty Circular Linked List.";

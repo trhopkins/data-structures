@@ -5,7 +5,7 @@ import interfaces.QueueInterface;
 /**
  * Queue ADT using linked Node. Currently supports integers only.
  * @author Travis Hopkins
- * @version 0.0.1
+ * @version 1.0.0
  * @see {@link https://www.baeldung.com/java-queue}
  */
 public class Queue implements QueueInterface {

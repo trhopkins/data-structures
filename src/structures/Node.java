@@ -5,7 +5,7 @@ import interfaces.NodeInterface;
 /**
  * Node ADT containing integer data.
  * @author Travis Hopkins
- * @version 0.0.1
+ * @version 1.0.0
  */
 public class Node implements NodeInterface {
 	int data; // consider Generics here
