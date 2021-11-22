@@ -87,6 +87,20 @@ public class Queue implements QueueInterface {
 	}
 
 	/**
+	 * Transforms this Queue into an array.
+	 * @return array of data corresponding to this Queue
+	 */
+	public int[] getKeys() {
+		int[] keys = new int[size()];
+		Node current = front;
+		for (int index=0; index<keys.length; index++) {
+			keys[index] = current.getData();
+			current = current.getNext();
+		}
+		return keys;
+	}
+
+	/**
 	 * @return info about each Node on its own line.
 	 */
 	public String toString() { // O(n)

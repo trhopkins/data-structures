@@ -79,6 +79,20 @@ public class Stack implements StackInterface {
 	}
 
 	/**
+	 * Transforms this Stack into an array.
+	 * @return array of data corresponding to this Stack
+	 */
+	public int[] getKeys() {
+		int[] keys = new int[size()];
+		Node current = top;
+		for (int index=0; index<keys.length; index++) {
+			keys[index] = current.getData();
+			current = current.getNext();
+		}
+		return keys;
+	}
+
+	/**
 	 * @return each Node's information on its own line.
 	 */
 	public String toString() { // O(n)
