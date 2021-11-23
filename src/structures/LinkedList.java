@@ -2,50 +2,62 @@ package structures;
 
 import interfaces.LinkedListInterface;
 
+/**
+ * LinkedList ADT using integer Nodes.
+ * @author Travis Hopkins
+ * @version 1.0.0
+ * @see {@link https://www.baeldung.com/java-linkedlist}
+ */
 public class LinkedList implements LinkedListInterface {
+	// car = head, cdr = head.getNext() for you LISPers out there
 	private Node head;
 
+	/**
+	 * LinkedList Constructor. Starts empty.
+	 */
 	public LinkedList() {
 		head = null;
 	}
 
-	public void insert(int data) {
+	/**
+	 * 'cons' operation. Adds a new Node to the front of the list.
+	 * @param data to add, replacing previous head
+	 */
+	public void insertFirst(int data) { // O(1)
 		head = new Node(data, head);
 	}
 
-	public void delete(int data) {
-		Node current = head;
-		Node previous = null;
-		while (current != null && current.getData() != data) {
-			previous = current;
-			current = current.getNext();
+	/**
+	 * Removes/reassigns head Node.
+	 */
+	public void deleteFirst() { // O(1)
+		if (!empty()) {
+			head = head.getNext();
 		}
-		previous.setNext(current.getNext());
 	}
 
-	public boolean search(int data) {
+	/**
+	 * Returns true if this data exists in this LinkedList.
+	 * @param key data to find
+	 * @return true if key data is found
+	 */
+	public boolean search(int key) { // O(n)
 		Node current = head;
 		while (current != null) {
-			if (current.getData() == data) {
+			if (current.getData() == key) {
 				return true;
 			} else {
 				current = current.getNext();
 			}
 		}
-		return false;
+		return false; // reached end of LinkedList
 	}
 
-	public int[] getKeys() {
-		int[] keys = new int[this.size()];
-		Node current = head;
-		for (int i=0; i<keys.length; i++) {
-			keys[i] = current.getData();
-			current = current.getNext();
-		}
-		return keys;
-	}
-
-	public int size() {
+	/**
+	 * Counts the Nodes in this LinkedList.
+	 * @return number of Nodes in this LinkedList
+	 */
+	public int size() { // O(n) since size is not stored locally
 		int size = 0;
 		Node current = head;
 		while (current != null) {
@@ -55,15 +67,49 @@ public class LinkedList implements LinkedListInterface {
 		return size;
 	}
 
-	public boolean empty() {
-		return head == null;
+	/**
+	 * Checks if this LinkedList contains any Nodes.
+	 * @return false if size is zero
+	 */
+	public boolean empty() { // O(1)
+		return head == null; // this.size() == 0 is O(n)
 	}
 
-	public void traverse() {
+	/**
+	 * Prints each Node on its own line. Similar to toString().
+	 */
+	public void traverse() { // O(n)
 		Node current = head;
 		while (current != null) {
 			System.out.println(current);
 			current = current.getNext();
 		}
+	}
+
+	/**
+	 * Transforms this LinkedList into an array.
+	 * @return array of data corresponding to this LinkedList
+	 */
+  public int[] getKeys() { // for debugging
+		int[] keys = new int[size()];
+		Node current = head;
+		for (int index=0; index<keys.length; index++) {
+			keys[index] = current.getData();
+			current = current.getNext();
+		}
+		return keys;
+	}
+
+	/**
+	 * @return info about each Node on its own line.
+	 */
+	public String toString() { // O(n)
+		Node current = head;
+		String info = "";
+		while (current != null) {
+			info += current.toString() + "\n";
+			current = current.getNext();
+		}
+		return info;
 	}
 }
