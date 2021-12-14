@@ -1,6 +1,7 @@
 package structures;
 
 import interfaces.QueueInterface;
+import nodes.Node;
 
 /**
  * Queue ADT using linked Node. Currently supports integers only.

@@ -1,6 +1,7 @@
 package structures;
 
 import interfaces.StackInterface;
+import nodes.Node;
 
 /**
  * Stack ADT using linked integer Nodes.

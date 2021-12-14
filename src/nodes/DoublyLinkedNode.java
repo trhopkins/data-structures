@@ -1,5 +1,10 @@
-package structures;
+package nodes;
 
+/**
+ * Doubly Linked Node ADT using integers.
+ * @author Travis Hopkins
+ * @version 1.0.0
+ */
 public class DoublyLinkedNode {
 	private int data;
 	private DoublyLinkedNode next, prev;

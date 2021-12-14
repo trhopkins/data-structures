@@ -1,7 +1,14 @@
 package structures;
 
 import interfaces.DoublyLinkedListInterface;
+import nodes.DoublyLinkedNode;
 
+/**
+ * Doubly Linked List ADT using Doubly Linked integer Nodes.
+ * @author Travis Hopkins
+ * @version 1.0.0
+ * @see {@link https://www.baeldung.com/cs/linked-list-data-structure}
+ */
 public class DoublyLinkedList implements DoublyLinkedListInterface {
 	private DoublyLinkedNode head;
 	private DoublyLinkedNode tail;

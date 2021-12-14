@@ -1,6 +1,6 @@
 package interfaces;
 
-import structures.DoublyLinkedNode;
+import nodes.DoublyLinkedNode;
 
 public interface DoublyLinkedListInterface {
 	public void insertFirst(int item);

@@ -1,6 +1,6 @@
 package interfaces;
 
-import structures.Node;
+import nodes.Node;
 
 public interface NodeInterface {
 	public int getData();

@@ -1,6 +1,7 @@
 package structures;
 
 import interfaces.LinkedListInterface;
+import nodes.Node;
 
 /**
  * LinkedList ADT using integer Nodes.

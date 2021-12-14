@@ -1,4 +1,4 @@
-package structures;
+package nodes;
 
 import interfaces.NodeInterface;
 

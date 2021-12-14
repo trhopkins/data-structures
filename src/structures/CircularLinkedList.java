@@ -1,6 +1,7 @@
 package structures;
 
 import interfaces.LinkedListInterface;
+import nodes.Node;
 
 /**
  * CircularLinkedList ADT using linked integer Nodes.
