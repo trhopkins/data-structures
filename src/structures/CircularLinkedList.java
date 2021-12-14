@@ -91,22 +91,6 @@ public class CircularLinkedList implements LinkedListInterface {
 		}
 	}
 
-	/*
-	public int[] getKeys() { // for debugging
-		int[] keys = new int[size()];
-		if (!empty()) {
-			Node current = tail;
-			int index = 0;
-			do {
-				current = current.getNext();
-				keys[index] = current.getData();
-				index++;
-			} while (current != tail);
-		}
-		return keys;
-	}
-	*/
-
 	public int[] getKeys() { // for debugging
 		int[] keys = new int[size()];
 		Node current = tail.getNext();

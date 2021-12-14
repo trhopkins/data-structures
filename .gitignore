@@ -1,2 +1,5 @@
 *.class
 src/testing/Main.java
+.vscode
+.settings
+

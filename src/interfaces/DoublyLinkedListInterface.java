@@ -8,8 +8,8 @@ public interface DoublyLinkedListInterface {
 	public DoublyLinkedNode deleteFirst();
 	public DoublyLinkedNode deleteLast();
 	public int size();
-	public int last();
 	public int first();
+	public int last();
 	public boolean empty();
 	public void traverse();
 }
