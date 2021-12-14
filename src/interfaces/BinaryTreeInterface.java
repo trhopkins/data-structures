@@ -4,14 +4,10 @@ import nodes.BinaryTreeNode;
 
 public interface BinaryTreeInterface {
 	public BinaryTreeNode getRoot();
-	public void setRoot(BinaryTreeNode root);
-	public void setLeft(BinaryTreeNode target, BinaryTreeNode left);
-	public void setRight(BinaryTreeNode target, BinaryTreeNode right);
-	//public void setLeft(BinaryTreeNode left);
-	//public void setRight(BinaryTreeNode right);
-	public void removeLeft(BinaryTreeNode target);
-	public void removeRight(BinaryTreeNode target);
-	public void clear(); // removeAll()?
+	public void setRoot(BinaryTreeNode root); // not certain if necessary
+	public void insert(int data);
+	public void delete(int data);
+	public void clear();
 	public boolean empty();
 	public int size();
 	public boolean search(int key);
