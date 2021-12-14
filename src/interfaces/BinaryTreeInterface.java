@@ -3,7 +3,8 @@ package interfaces;
 import nodes.BinaryTreeNode;
 
 public interface BinaryTreeInterface {
-	public BinaryTreeNode root();
+	public BinaryTreeNode getRoot();
+	public void setRoot(BinaryTreeNode root);
 	public void setLeft(BinaryTreeNode target, BinaryTreeNode left);
 	public void setRight(BinaryTreeNode target, BinaryTreeNode right);
 	//public void setLeft(BinaryTreeNode left);
