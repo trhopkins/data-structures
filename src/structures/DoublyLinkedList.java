@@ -44,22 +44,20 @@ public class DoublyLinkedList implements DoublyLinkedListInterface {
 		size++;
 	}
 
-	public DoublyLinkedNode deleteFirst() {
+	public void deleteFirst() {
 		DoublyLinkedNode oldFirst = head.getNext();
 		DoublyLinkedNode newFirst = oldFirst.getNext();
 		newFirst.setPrev(head);
 		head.setNext(newFirst);
 		size--;
-		return oldFirst;
 	}
 
-	public DoublyLinkedNode deleteLast() {
+	public void deleteLast() {
 		DoublyLinkedNode oldLast = tail.getPrev();
 		DoublyLinkedNode newLast = oldLast.getPrev();
 		tail.setPrev(newLast);
 		newLast.setNext(tail);
 		size--;
-		return oldLast;
 	}
 
 	public int first() {

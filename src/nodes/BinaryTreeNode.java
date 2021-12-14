@@ -1,5 +1,10 @@
 package nodes;
 
+/**
+ * Element of a binary tree. Can be root, branch, or leaf.
+ * @author Travis Hopkins
+ * @version 1.0.0
+ */
 public class BinaryTreeNode {
 	private int data;
 	private BinaryTreeNode left, right;
