@@ -1,5 +1,7 @@
 package structures;
 
+import java.util.Queue;
+import java.util.LinkedList;
 import nodes.BinaryTreeNode;
 import interfaces.BinaryTreeInterface;
 
@@ -109,7 +111,20 @@ public class BinaryTree implements BinaryTreeInterface {
 	}
 
 	public void levelOrderTraverse() {
-		recursiveLevelOrderTraverse(root);
+		if (root != null) {
+			Queue<BinaryTreeNode> toVisit = new LinkedList<BinaryTreeNode>(); // TODO: replace with own generic version(s)?
+			toVisit.add(root);
+			while (!toVisit.isEmpty()) {
+				BinaryTreeNode current = toVisit.remove();
+				System.out.println(current);
+				if (current.getLeft() != null) {
+					toVisit.add(current.getLeft());
+				}
+				if (current.getRight() != null) {
+					toVisit.add(current.getRight());
+				}
+			}
+		}
 	}
 
 	private void recursiveInOrderTraverse(BinaryTreeNode root) {
@@ -137,9 +152,5 @@ public class BinaryTree implements BinaryTreeInterface {
 			recursiveInOrderTraverse(root.getRight());
 			System.out.println(root);
 		} // else {System.out.println("null");}
-	}
-
-	private void recursiveLevelOrderTraverse(BinaryTreeNode root) {
-		; // requires Queue<BinaryTreeNode>
 	}
 }
