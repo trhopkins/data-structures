@@ -5,9 +5,15 @@ import java.util.LinkedList;
 import nodes.BinaryTreeNode;
 import interfaces.BinaryTreeInterface;
 
+/**
+ * Binary tree containing integer nodes.
+ * @author Travis Hopkins
+ * @version 1.0.0
+ * @see {@link https://www.baeldung.com/java-binary-tree}
+ */
 public class BinaryTree implements BinaryTreeInterface {
 	private BinaryTreeNode root;
-	private int size; // TODO: fix insert/delete to work properly with size
+	private int size;
 
 	public BinaryTree() {
 		root = null;
@@ -86,12 +92,40 @@ public class BinaryTree implements BinaryTreeInterface {
 		return size;
 	}
 
-	public boolean search(int key) { // TODO: finish
-		return false;
+	public boolean search(int key) {
+		return recursiveSearch(root, key);
 	}
 
-	public BinaryTreeNode find(int key) { // TODO: finish
-		return null;
+	private boolean recursiveSearch(BinaryTreeNode root, int key) {
+		if (root == null) { // leaf
+			return false;
+		} else if (root.getData() == key) { // match!
+			return true;
+		} else { // try children
+			if (key < root.getData()) { // left?
+				return recursiveSearch(root.getLeft(), key);
+			} else { // right?
+				return recursiveSearch(root.getRight(), key);
+			}
+		}
+	}
+
+	public BinaryTreeNode find(int key) {
+		return recursiveFind(root, key);
+	}
+
+	private BinaryTreeNode recursiveFind(BinaryTreeNode root, int key) { // basically identical to search. Once iterators are added, consider using that instead?
+		if (root == null) { // leaf
+			return null;
+		} else if (root.getData() == key) { // match!
+			return root;
+		} else { // try children
+			if (key < root.getData()) { // left?
+				return recursiveFind(root.getLeft(), key);
+			} else { // right?
+				return recursiveFind(root.getRight(), key);
+			}
+		}
 	}
 
 	public void traverse() {
