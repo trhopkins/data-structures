@@ -94,7 +94,7 @@ public class LinkedList implements LinkedListInterface {
   public int[] getKeys() { // for debugging
 		int[] keys = new int[size()];
 		Node current = head;
-		for (int index=0; index<keys.length; index++) {
+		for (int index = 0; index < keys.length; index++) {
 			keys[index] = current.getData();
 			current = current.getNext();
 		}

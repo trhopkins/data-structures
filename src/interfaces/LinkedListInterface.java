@@ -1,10 +1,10 @@
 package interfaces;
 
 public interface LinkedListInterface {
-	public void insertFirst(int data);
-	public void deleteFirst();
-	public boolean search(int data);
-	public int size();
-	public boolean empty();
-	public void traverse();
+	void insertFirst(int data);
+	void deleteFirst();
+	boolean search(int data);
+	int size();
+	boolean empty();
+	void traverse();
 }
