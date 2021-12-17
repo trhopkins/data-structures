@@ -6,7 +6,8 @@ import nodes.DoublyLinkedNode;
 /**
  * Doubly Linked List ADT using Doubly Linked integer Nodes.
  * @author Travis Hopkins
- * @version 1.0.0
+ * @author Roland Van Duine
+ * @version 1.0.1
  * @see {@link https://www.baeldung.com/cs/linked-list-data-structure}
  */
 public class DoublyLinkedList implements DoublyLinkedListInterface {
@@ -14,29 +15,48 @@ public class DoublyLinkedList implements DoublyLinkedListInterface {
 	private DoublyLinkedNode tail;
 	private int size;
 
+	/**
+	 * DoublyLinkedList Constructor. Starts empty. Size = 0.
+	 */
 	public DoublyLinkedList() {
 		head = new DoublyLinkedNode(0, tail, null);
 		tail = new DoublyLinkedNode(0, null, head);
 		size = 0;
 	}
 
-	public boolean empty() {
+	/**
+	 * Checks if this DoublyLinkedList contains any Nodes.
+	 * @return false if size is zero
+	 */
+	public boolean empty() { // O(1)
 		return size == 0;
 	}
 
-	public int size() {
+	/**
+	 * @return size the DoublyLinkedList
+	 */
+	public int size() { // 0(1)
 		return size;
 	}
 
-	public void insertFirst(int data) {
+	/**
+	 * Adds a new Node to the front of the list.
+	 * Updates the next node's previous node
+	 * @param data to add, replacing previous head
+	 */
+	public void insertFirst(int data) { // O(1)
 		DoublyLinkedNode oldFirst = head.getNext();
 		DoublyLinkedNode newFirst = new DoublyLinkedNode(data, oldFirst, head);
 		oldFirst.setPrev(newFirst);
 		head.setNext(newFirst);
 		size++;
 	}
-
-	public void insertLast(int data) {
+	/**
+	 * Adds a new Node to the end of the list.
+	 * Updates the previous node's next node
+	 * @param data to add, replacing previous tail
+	 */
+	public void insertLast(int data) { // 0(1)
 		DoublyLinkedNode oldLast = tail.getPrev();
 		DoublyLinkedNode newLast = new DoublyLinkedNode(data, tail, oldLast);
 		oldLast.setNext(newLast);
@@ -44,7 +64,12 @@ public class DoublyLinkedList implements DoublyLinkedListInterface {
 		size++;
 	}
 
-	public void deleteFirst() {
+	/**
+	 * Removes/reassigns head Node.
+	 * Decrements size
+	 * Updates the next node's previous node
+	 */
+	public void deleteFirst() { // O(1)
 		DoublyLinkedNode oldFirst = head.getNext();
 		DoublyLinkedNode newFirst = oldFirst.getNext();
 		newFirst.setPrev(head);
@@ -52,7 +77,12 @@ public class DoublyLinkedList implements DoublyLinkedListInterface {
 		size--;
 	}
 
-	public void deleteLast() {
+	/**
+	 * Removes/reassigns tail Node.
+	 * Decrements size
+	 * Updates the previous node's next node
+	 */
+	public void deleteLast() { // O(1)
 		DoublyLinkedNode oldLast = tail.getPrev();
 		DoublyLinkedNode newLast = oldLast.getPrev();
 		tail.setPrev(newLast);
@@ -60,15 +90,36 @@ public class DoublyLinkedList implements DoublyLinkedListInterface {
 		size--;
 	}
 
-	public int first() {
+	/**
+	 * Return int of first node
+	 * @return int the first node
+	 */
+	public int first() { // O(1)
+		if(head==null) {
+			//System.out.println("Trying to access empty node");
+			return -1; //default would be 0
+		}
 		return head.getNext().getData();
 	}
 
-	public int last() {
+	/**
+	 * Return int of last node
+	 * @return int the last node
+	 */
+	public int last() { // O(1)
+		if(tail==null) {
+			//System.out.println("Trying to access empty node");
+			return -1; //default would be 0
+		}
 		return tail.getPrev().getData();
 	}
 
-	public boolean search(int key) {
+	/**
+	 * Returns true if this data exists in this DoublyLinkedList.
+	 * @param key data to find
+	 * @return true if key data is found
+	 */
+	public boolean search(int key) { // 0(n)
 		DoublyLinkedNode current = head.getNext();
 		while (current != tail) {
 			if (current.getData() == key) {
@@ -80,7 +131,10 @@ public class DoublyLinkedList implements DoublyLinkedListInterface {
 		return false;
 	}
 
-	public void traverse() {
+	/**
+	 * Prints each Node on its own line. Similar to toString().
+	 */
+	public void traverse() { // O(n)
 		DoublyLinkedNode current = head.getNext();
 		while (current != tail) {
 			System.out.println(current);
@@ -88,7 +142,10 @@ public class DoublyLinkedList implements DoublyLinkedListInterface {
 		}
 	}
 
-	public String toString() {
+	/**
+	 * @return info about each Node on its own line.
+	 */
+	public String toString() { // O(n)
 		DoublyLinkedNode current = head.getNext();
 		String info = "";
 		while (current != tail) {
