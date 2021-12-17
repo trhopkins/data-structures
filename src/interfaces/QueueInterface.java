@@ -1,10 +1,10 @@
 package interfaces;
 
 public interface QueueInterface {
-	public void enqueue(int data);
-	public int dequeue();
-	public int front();
-	public int size();
-	public boolean empty();
-	public void traverse();
+	void enqueue(int data);
+	int dequeue();
+	int front();
+	int size();
+	boolean empty();
+	void traverse();
 }

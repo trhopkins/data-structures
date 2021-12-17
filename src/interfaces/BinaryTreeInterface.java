@@ -3,17 +3,17 @@ package interfaces;
 import nodes.BinaryTreeNode;
 
 public interface BinaryTreeInterface {
-	public BinaryTreeNode root();
-	public void insert(int data);
-	public void delete(int data);
-	public void clear();
-	public boolean empty();
-	public int size();
-	public boolean search(int key);
-	public BinaryTreeNode find(int key);
-	public void traverse();
-	public void inOrderTraverse();
-	public void preOrderTraverse();
-	public void postOrderTraverse();
-	public void levelOrderTraverse();
+	BinaryTreeNode root();
+	void insert(int data);
+	void delete(int data);
+	void clear();
+	boolean empty();
+	int size();
+	boolean search(int key);
+	BinaryTreeNode find(int key);
+	void traverse();
+	void inOrderTraverse();
+	void preOrderTraverse();
+	void postOrderTraverse();
+	void levelOrderTraverse();
 }

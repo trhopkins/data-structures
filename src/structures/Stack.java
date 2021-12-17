@@ -86,7 +86,7 @@ public class Stack implements StackInterface {
 	public int[] getKeys() {
 		int[] keys = new int[size()];
 		Node current = top;
-		for (int index=0; index<keys.length; index++) {
+		for (int index = 0; index < keys.length; index++) {
 			keys[index] = current.getData();
 			current = current.getNext();
 		}
