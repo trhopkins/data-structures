@@ -1,7 +1,5 @@
 package interfaces;
 
-//import nodes.DoublyLinkedNode;
-
 public interface DoublyLinkedListInterface {
 	void insertFirst(int item);
 	void insertLast(int item);

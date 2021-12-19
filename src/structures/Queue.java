@@ -14,9 +14,7 @@ public class Queue implements QueueInterface {
 	private Node rear;
 	private int size; // keeping internal count prevents O(n) size()
 
-	/**
-	 * Constructor. Starts empty.
-	 */
+	/** Constructor. Starts empty */
 	public Queue() {
 		size = 0;
 		front = rear = null;
@@ -76,9 +74,7 @@ public class Queue implements QueueInterface {
 		return size == 0; // front == null also works
 	}
 
-	/**
-	 * Prints each Node on their own line. Simiar to toString().
-	 */
+	/** Prints each Node on its own line. */
 	public void traverse() { // O(n)
 		Node current = front;
 		while (current != null) {

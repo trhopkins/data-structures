@@ -10,27 +10,23 @@ import nodes.Node;
  * @see {@link https://www.baeldung.com/java-linkedlist}
  */
 public class LinkedList implements LinkedListInterface {
-	// car = head, cdr = head.getNext() for you LISPers out there
+	// car = head, cdr = head.getNext() for you LISPers out there ;)
 	private Node head;
 
-	/**
-	 * LinkedList Constructor. Starts empty.
-	 */
+	/** Empty LinkedList Constructor. */
 	public LinkedList() {
 		head = null;
 	}
 
 	/**
-	 * 'cons' operation. Adds a new Node to the front of the list.
+	 * Adds a new Node to the front of the list. 'Cons' operation. 
 	 * @param data to add, replacing previous head
 	 */
 	public void insertFirst(int data) { // O(1)
 		head = new Node(data, head);
 	}
 
-	/**
-	 * Removes/reassigns head Node.
-	 */
+	/** Removes/reassigns head Node. */
 	public void deleteFirst() { // O(1)
 		if (!empty()) {
 			head = head.getNext();
@@ -76,9 +72,7 @@ public class LinkedList implements LinkedListInterface {
 		return head == null; // this.size() == 0 is O(n)
 	}
 
-	/**
-	 * Prints each Node on its own line. Similar to toString().
-	 */
+	/** Prints each Node on its own line. Similar to toString(). */
 	public void traverse() { // O(n)
 		Node current = head;
 		while (current != null) {
@@ -101,9 +95,7 @@ public class LinkedList implements LinkedListInterface {
 		return keys;
 	}
 
-	/**
-	 * @return info about each Node on its own line.
-	 */
+	/** @return info about each Node on its own line. */
 	public String toString() { // O(n)
 		Node current = head;
 		String info = "";

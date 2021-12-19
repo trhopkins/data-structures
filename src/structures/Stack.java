@@ -65,9 +65,7 @@ public class Stack implements StackInterface {
 		return top == null; // size == 0 also works
 	}
 
-	/**
-	 * Prints each Node on its own line. Similar to toString().
-	 */
+	/** Prints each Node on its own line. */
 	public void traverse() { // O(n)
 		Stack tmp = new Stack();
 		while (!empty()) {
@@ -93,9 +91,7 @@ public class Stack implements StackInterface {
 		return keys;
 	}
 
-	/**
-	 * @return each Node's information on its own line.
-	 */
+	/** @return each Node's information on its own line */
 	public String toString() { // O(n)
 		Stack tmp = new Stack();
 		String info = "";
