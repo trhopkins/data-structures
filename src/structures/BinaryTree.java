@@ -240,8 +240,7 @@ public class BinaryTree implements BinaryTreeInterface {
 
 	/** Print all Nodes in left-root-right order. */
 	private void recursiveInOrderTraverse(BinaryTreeNode root) {
-		BinaryTreeNode current = root;
-		if (current != null) {
+		if (root != null) {
 			recursiveInOrderTraverse(root.getLeft());
 			System.out.println(root);
 			recursiveInOrderTraverse(root.getRight());
@@ -250,8 +249,7 @@ public class BinaryTree implements BinaryTreeInterface {
 
 	/** Print all Nodes in root-left-right order. */
 	private void recursivePreOrderTraverse(BinaryTreeNode root) {
-		BinaryTreeNode current = root;
-		if (current != null) {
+		if (root != null) {
 			System.out.println(root);
 			recursiveInOrderTraverse(root.getLeft());
 			recursiveInOrderTraverse(root.getRight());
@@ -260,8 +258,7 @@ public class BinaryTree implements BinaryTreeInterface {
 
 	/** Print all Nodes in left-right-root order. */
 	private void recursivePostOrderTraverse(BinaryTreeNode root) {
-		BinaryTreeNode current = root;
-		if (current != null) {
+		if (root != null) {
 			recursiveInOrderTraverse(root.getLeft());
 			recursiveInOrderTraverse(root.getRight());
 			System.out.println(root);
