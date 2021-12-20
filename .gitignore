@@ -1,4 +1,4 @@
-*.class
-src/testing/Main.java
 .vscode
-.settings
+.DS_Store
+.gradle
+build

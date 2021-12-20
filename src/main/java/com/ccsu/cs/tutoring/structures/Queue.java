@@ -1,7 +1,7 @@
-package structures;
+package com.ccsu.cs.tutoring.structures;
 
-import interfaces.QueueInterface;
-import nodes.Node;
+import com.ccsu.cs.tutoring.interfaces.QueueInterface;
+import com.ccsu.cs.tutoring.nodes.Node;
 
 /**
  * Queue ADT using linked Node. Currently supports integers only.

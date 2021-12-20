@@ -1,4 +1,4 @@
-package interfaces;
+package com.ccsu.cs.tutoring.interfaces;
 
 public interface QueueInterface {
 	void enqueue(int data);

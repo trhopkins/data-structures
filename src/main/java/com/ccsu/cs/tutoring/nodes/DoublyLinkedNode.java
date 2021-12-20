@@ -1,4 +1,4 @@
-package nodes;
+package com.ccsu.cs.tutoring.nodes;
 
 /**
  * Doubly Linked Node ADT using integers.

@@ -1,7 +1,7 @@
-package structures;
+package com.ccsu.cs.tutoring.structures;
 
-import interfaces.StackInterface;
-import nodes.Node;
+import com.ccsu.cs.tutoring.interfaces.StackInterface;
+import com.ccsu.cs.tutoring.nodes.Node;
 
 /**
  * Stack ADT using linked integer Nodes.

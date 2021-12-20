@@ -1,7 +1,7 @@
-package structures;
+package com.ccsu.cs.tutoring.structures;
 
-import interfaces.LinkedListInterface;
-import nodes.Node;
+import com.ccsu.cs.tutoring.interfaces.LinkedListInterface;
+import com.ccsu.cs.tutoring.nodes.Node;
 
 /**
  * LinkedList ADT using integer Nodes.
