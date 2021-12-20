@@ -1,13 +1,12 @@
-package nodes;
+package com.ccsu.cs.tutoring.nodes;
 
-import interfaces.NodeInterface;
 
 /**
  * Node ADT containing integer data.
  * @author Travis Hopkins
  * @version 1.0.0
  */
-public class Node implements NodeInterface {
+public class Node {
 	int data; // consider Generics here
 	Node next;
 

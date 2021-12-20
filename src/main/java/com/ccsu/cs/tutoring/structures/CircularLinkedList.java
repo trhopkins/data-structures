@@ -1,7 +1,7 @@
-package structures;
+package com.ccsu.cs.tutoring.structures;
 
-import interfaces.LinkedListInterface;
-import nodes.Node;
+import com.ccsu.cs.tutoring.interfaces.LinkedListInterface;
+import com.ccsu.cs.tutoring.nodes.Node;
 
 /**
  * CircularLinkedList ADT using linked integer Nodes.
@@ -12,10 +12,17 @@ import nodes.Node;
 public class CircularLinkedList implements LinkedListInterface {
 	private Node tail;
 
+	/**
+	 * Empty CLL constructor.
+	 */
 	public CircularLinkedList() {
 		tail = null;
 	}
 
+	/**
+	 * Add another element to the CLL.
+	 * @param data to add the the CLL
+	 */
 	public void insertFirst(int data) {
 		if (empty()) {
 			Node newNode = new Node(data, null);
@@ -27,6 +34,10 @@ public class CircularLinkedList implements LinkedListInterface {
 		}
 	}
 
+	/**
+	 * Append another item to the CLL.
+	 * @param data to add
+	 */
 	public void insertLast(int data) {
 		if (empty()) {
 			Node newNode = new Node(data, null);
@@ -39,6 +50,7 @@ public class CircularLinkedList implements LinkedListInterface {
 		}
 	}
 
+	/** Remove the first element. 'Cdr' operation. */
 	public void deleteFirst() {
 		if (!empty()) {
 			if (size() == 1) {
@@ -49,6 +61,11 @@ public class CircularLinkedList implements LinkedListInterface {
 		}
 	}
 
+	/**
+	 * Iterate through each element to see if key is in CLL.
+	 * @param key to search for
+	 * @return true if item is found in CLL.
+	 */
 	public boolean search(int key) {
 		if (tail == null) {
 			return false;
@@ -64,6 +81,10 @@ public class CircularLinkedList implements LinkedListInterface {
 		}
 	}
 
+	/**
+	 * Return the number of Nodes in this CLL.
+	 * @return number of elements in CLL
+	 */
 	public int size() {
 		if (tail == null) {
 			return 0;
@@ -78,10 +99,15 @@ public class CircularLinkedList implements LinkedListInterface {
 		}
 	}
 
+	/**
+	 * Check if there are any elements in this CLL.
+	 * @return true if there are no elements
+	 */
 	public boolean empty() {
 		return tail == null;
 	}
 
+	/** Print each item in this CLL. */
 	public void traverse() {
 		if (!empty()) {
 			Node current = tail;
@@ -92,16 +118,23 @@ public class CircularLinkedList implements LinkedListInterface {
 		}
 	}
 
-	public int[] getKeys() { // for debugging
+	/**
+	 * Turn data elements from a Linked List to an array for debugging.
+	 * @return array of CLL contents
+	 */
+	public int[] getKeys() {
 		int[] keys = new int[size()];
 		Node current = tail.getNext();
-		for (int index=0; index<keys.length; index++) {
+		for (int index = 0; index < keys.length; index++) {
 			keys[index] = current.getData();
 			current = current.getNext();
 		}
 		return keys;
 	}
 
+	/**
+	 * @return String representation of each element.
+	 */
 	public String toString() {
 		String info = "";
 		if (!empty()) {

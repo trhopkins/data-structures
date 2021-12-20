@@ -1,7 +1,7 @@
-package structures;
+package com.ccsu.cs.tutoring.structures;
 
-import interfaces.StackInterface;
-import nodes.Node;
+import com.ccsu.cs.tutoring.interfaces.StackInterface;
+import com.ccsu.cs.tutoring.nodes.Node;
 
 /**
  * Stack ADT using linked integer Nodes.
@@ -65,9 +65,7 @@ public class Stack implements StackInterface {
 		return top == null; // size == 0 also works
 	}
 
-	/**
-	 * Prints each Node on its own line. Similar to toString().
-	 */
+	/** Prints each Node on its own line. */
 	public void traverse() { // O(n)
 		Stack tmp = new Stack();
 		while (!empty()) {
@@ -86,16 +84,14 @@ public class Stack implements StackInterface {
 	public int[] getKeys() {
 		int[] keys = new int[size()];
 		Node current = top;
-		for (int index=0; index<keys.length; index++) {
+		for (int index = 0; index < keys.length; index++) {
 			keys[index] = current.getData();
 			current = current.getNext();
 		}
 		return keys;
 	}
 
-	/**
-	 * @return each Node's information on its own line.
-	 */
+	/** @return each Node's information on its own line */
 	public String toString() { // O(n)
 		Stack tmp = new Stack();
 		String info = "";

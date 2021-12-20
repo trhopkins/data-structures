@@ -1,7 +1,7 @@
-package structures;
+package com.ccsu.cs.tutoring.structures;
 
-import interfaces.QueueInterface;
-import nodes.Node;
+import com.ccsu.cs.tutoring.interfaces.QueueInterface;
+import com.ccsu.cs.tutoring.nodes.Node;
 
 /**
  * Queue ADT using linked Node. Currently supports integers only.
@@ -14,9 +14,7 @@ public class Queue implements QueueInterface {
 	private Node rear;
 	private int size; // keeping internal count prevents O(n) size()
 
-	/**
-	 * Constructor. Starts empty.
-	 */
+	/** Constructor. Starts empty */
 	public Queue() {
 		size = 0;
 		front = rear = null;
@@ -76,9 +74,7 @@ public class Queue implements QueueInterface {
 		return size == 0; // front == null also works
 	}
 
-	/**
-	 * Prints each Node on their own line. Simiar to toString().
-	 */
+	/** Prints each Node on its own line. */
 	public void traverse() { // O(n)
 		Node current = front;
 		while (current != null) {
@@ -94,7 +90,7 @@ public class Queue implements QueueInterface {
 	public int[] getKeys() {
 		int[] keys = new int[size()];
 		Node current = front;
-		for (int index=0; index<keys.length; index++) {
+		for (int index = 0; index < keys.length; index++) {
 			keys[index] = current.getData();
 			current = current.getNext();
 		}
