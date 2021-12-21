@@ -9,9 +9,9 @@ import com.ccsu.cs.tutoring.nodes.Node;
  * @version 1.0.0
  * @see {@link https://www.baeldung.com/java-linkedlist}
  */
-public class LinkedList implements LinkedListInterface {
+public class LinkedList<T> implements LinkedListInterface<T> {
 	// car = head, cdr = head.getNext() for you LISPers out there ;)
-	private Node head;
+	private Node<T> head;
 
 	/** Empty LinkedList Constructor. */
 	public LinkedList() {
@@ -22,9 +22,9 @@ public class LinkedList implements LinkedListInterface {
 	 * Adds a new Node to the front of the list. 'Cons' operation. 
 	 * @param data to add, replacing previous head
 	 */
-	public void insertFirst(int data) { // O(1)
+	public void insertFirst(T data) { // O(1)
 		if (!full()) {
-			head = new Node(data, head);
+			head = new Node<T>(data, head);
 		} // else: throw error for being too large?
 	}
 
@@ -40,8 +40,8 @@ public class LinkedList implements LinkedListInterface {
 	 * @param key data to find
 	 * @return true if key data is found
 	 */
-	public boolean search(int key) { // O(n)
-		Node current = head;
+	public boolean search(T key) { // O(n)
+		Node<T> current = head;
 		while (current != null) {
 			if (current.getData() == key) {
 				return true;
@@ -58,7 +58,7 @@ public class LinkedList implements LinkedListInterface {
 	 */
 	public int size() { // O(n) since size is not stored locally
 		int size = 0;
-		Node current = head;
+		Node<T> current = head;
 		while (current != null) {
 			current = current.getNext();
 			size++;
@@ -84,30 +84,16 @@ public class LinkedList implements LinkedListInterface {
 
 	/** Prints each Node on its own line. Similar to toString(). */
 	public void traverse() { // O(n)
-		Node current = head;
+		Node<T> current = head;
 		while (current != null) {
 			System.out.println(current);
 			current = current.getNext();
 		}
 	}
 
-	/**
-	 * Transforms this LinkedList into an array.
-	 * @return array of data corresponding to this LinkedList
-	 */
-  public int[] getKeys() { // for debugging
-		int[] keys = new int[size()];
-		Node current = head;
-		for (int index = 0; index < keys.length; index++) {
-			keys[index] = current.getData();
-			current = current.getNext();
-		}
-		return keys;
-	}
-
 	/** @return info about each Node on its own line. */
 	public String toString() { // O(n)
-		Node current = head;
+		Node<T> current = head;
 		String info = "";
 		while (current != null) {
 			info += current.toString() + "\n";

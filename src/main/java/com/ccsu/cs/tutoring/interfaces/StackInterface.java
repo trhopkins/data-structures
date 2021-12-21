@@ -1,9 +1,9 @@
 package com.ccsu.cs.tutoring.interfaces;
 
-public interface StackInterface {
-	void push(int data);
-	int pop();
-	int ontop();
+public interface StackInterface<T> {
+	void push(T data);
+	T pop();
+	T ontop();
 	int size();
 	boolean empty();
 	boolean full();

@@ -9,13 +9,13 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 public class LinkedListTest {
 	@Test
 	void linkedListStartsEmpty() {
-		LinkedList numbers = new LinkedList();
+		LinkedList<Integer> numbers = new LinkedList<Integer>();
 		assertTrue(numbers.empty());
 	}
 
 	@Test
 	void addingFiveElementsMakesSizeFive() {
-		LinkedList numbers = new LinkedList();
+		LinkedList<Integer> numbers = new LinkedList<Integer>();
 		numbers.insertFirst(0);
 		numbers.insertFirst(8);
 		numbers.insertFirst(9);
@@ -26,7 +26,7 @@ public class LinkedListTest {
 
 	@Test
 	void deletingElementsReducesSize() {
-		LinkedList numbers = new LinkedList();
+		LinkedList<Integer> numbers = new LinkedList<Integer>();
 		int oldSize, newSize;
 		numbers.insertFirst(0);
 		numbers.insertFirst(8);
