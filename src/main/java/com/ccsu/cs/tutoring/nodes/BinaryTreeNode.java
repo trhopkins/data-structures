@@ -5,9 +5,9 @@ package com.ccsu.cs.tutoring.nodes;
  * @author Travis Hopkins
  * @version 1.0.0
  */
-public class BinaryTreeNode {
-	private int data;
-	private BinaryTreeNode left, right;
+public class BinaryTreeNode<T extends Comparable<T>> {
+	private T data;
+	private BinaryTreeNode<T> left, right;
 
 	/**
 	 * Constructor for BinaryTreeNodes. Can set as empty with BinaryTreeNode(0, null, null)
@@ -15,7 +15,7 @@ public class BinaryTreeNode {
 	 * @param left child, < this Node
 	 * @param right child, >= this Node
 	 */
-	public BinaryTreeNode(int data, BinaryTreeNode left, BinaryTreeNode right) {
+	public BinaryTreeNode(T data, BinaryTreeNode<T> left, BinaryTreeNode<T> right) {
 		this.data = data;
 		this.left = left;
 		this.right = right;
@@ -25,7 +25,7 @@ public class BinaryTreeNode {
 	 * Access data associated with this Node.
 	 * @return the data stored in this Node
 	 */
-	public int getData() {
+	public T getData() {
 		return data;
 	}
 
@@ -33,7 +33,7 @@ public class BinaryTreeNode {
 	 * Get the left child (whose data is 'less than' this Node).
 	 * @return the left child Node
 	 */
-	public BinaryTreeNode getLeft() {
+	public BinaryTreeNode<T> getLeft() {
 		return left;
 	}
 
@@ -42,7 +42,7 @@ public class BinaryTreeNode {
 	 * this Node).
 	 * @return the right child Node
 	 */
-	public BinaryTreeNode getRight() {
+	public BinaryTreeNode<T> getRight() {
 		return right;
 	}
 
@@ -50,7 +50,7 @@ public class BinaryTreeNode {
 	 * Change data associated with this Node.
 	 * @param data to set this Node to contain
 	 */
-	public void setData(int data) {
+	public void setData(T data) {
 		this.data = data;
 	}
 
@@ -58,7 +58,7 @@ public class BinaryTreeNode {
 	 * Change left child of this Node.
 	 * @param left child to set
 	 */
-	public void setLeft(BinaryTreeNode left) {
+	public void setLeft(BinaryTreeNode<T> left) {
 		this.left = left;
 	}
 
@@ -66,7 +66,7 @@ public class BinaryTreeNode {
 	 * Change right child of this Node.
 	 * @param right child to set
 	 */
-	public void setRight(BinaryTreeNode right) {
+	public void setRight(BinaryTreeNode<T> right) {
 		this.right = right;
 	}
 
