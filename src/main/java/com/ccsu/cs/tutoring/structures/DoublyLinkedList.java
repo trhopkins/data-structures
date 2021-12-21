@@ -1,7 +1,7 @@
-package structures;
+package com.ccsu.cs.tutoring.structures;
 
-import interfaces.DoublyLinkedListInterface;
-import nodes.DoublyLinkedNode;
+import com.ccsu.cs.tutoring.interfaces.DoublyLinkedListInterface;
+import com.ccsu.cs.tutoring.nodes.DoublyLinkedNode;
 
 /**
  * Doubly Linked List ADT using Doubly Linked integer Nodes.

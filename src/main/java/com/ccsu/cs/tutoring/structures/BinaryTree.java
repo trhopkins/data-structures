@@ -1,9 +1,9 @@
-package structures;
+package com.ccsu.cs.tutoring.structures;
 
 import java.util.Queue;
 import java.util.LinkedList;
-import nodes.BinaryTreeNode;
-import interfaces.BinaryTreeInterface;
+import com.ccsu.cs.tutoring.nodes.BinaryTreeNode;
+import com.ccsu.cs.tutoring.interfaces.BinaryTreeInterface;
 
 /**
  * Binary tree containing integer nodes.

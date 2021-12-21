@@ -1,4 +1,4 @@
-package nodes;
+package com.ccsu.cs.tutoring.nodes;
 
 
 /**

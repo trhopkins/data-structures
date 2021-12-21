@@ -1,4 +1,4 @@
-package interfaces;
+package com.ccsu.cs.tutoring.interfaces;
 
 public interface BinaryTreeInterface {
 	void insert(int data);
