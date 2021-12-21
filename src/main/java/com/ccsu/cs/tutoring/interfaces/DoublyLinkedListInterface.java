@@ -1,12 +1,12 @@
 package com.ccsu.cs.tutoring.interfaces;
 
-public interface DoublyLinkedListInterface {
-	void insertFirst(int item);
-	void insertLast(int item);
+public interface DoublyLinkedListInterface<T> {
+	void insertFirst(T item);
+	void insertLast(T item);
 	void deleteFirst();
 	void deleteLast();
-	int first();
-	int last();
+	T first();
+	T last();
 	int size();
 	boolean empty();
 	boolean full();

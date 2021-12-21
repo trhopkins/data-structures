@@ -5,9 +5,9 @@ package com.ccsu.cs.tutoring.nodes;
  * @author Travis Hopkins
  * @version 1.0.0
  */
-public class DoublyLinkedNode {
-	private int data;
-	private DoublyLinkedNode next, prev;
+public class DoublyLinkedNode<T> {
+	private T data;
+	private DoublyLinkedNode<T> next, prev;
 
 	/**
 	 * Constructor of DLNode objects. For empty Nodes, try DLNode(0, null, null).
@@ -15,7 +15,7 @@ public class DoublyLinkedNode {
 	 * @param next Node to precede this Node
 	 * @param prev Node to follow this Node
 	 */
-	public DoublyLinkedNode(int data, DoublyLinkedNode next, DoublyLinkedNode prev) {
+	public DoublyLinkedNode(T data, DoublyLinkedNode<T> next, DoublyLinkedNode<T> prev) {
 		this.data = data;
 		this.next = next;
 		this.prev = prev;
@@ -25,7 +25,7 @@ public class DoublyLinkedNode {
 	 * Access data associated with this Node.
 	 * @return the data stored in this Node
 	 */
-	public int getData() {
+	public T getData() {
 		return data;
 	}
 
@@ -33,7 +33,7 @@ public class DoublyLinkedNode {
 	 * Access the following Node
 	 * @return the Node following this Node
 	 */
-	public DoublyLinkedNode getNext() {
+	public DoublyLinkedNode<T> getNext() {
 		return next;
 	}
 
@@ -41,7 +41,7 @@ public class DoublyLinkedNode {
 	 * Access the preceding Node
 	 * @return the Node preceding this Node
 	 */
-	public DoublyLinkedNode getPrev() {
+	public DoublyLinkedNode<T> getPrev() {
 		return prev;
 	}
 
@@ -49,7 +49,7 @@ public class DoublyLinkedNode {
 	 * Change the data in this this Node.
 	 * @param data to store
 	 */
-	public void setData(int data) {
+	public void setData(T data) {
 		this.data = data;
 	}
 
@@ -57,7 +57,7 @@ public class DoublyLinkedNode {
 	 * Change the Node following this Node.
 	 * @param next Node to follow this one
 	 */
-	public void setNext(DoublyLinkedNode next) {
+	public void setNext(DoublyLinkedNode<T> next) {
 		this.next = next;
 	}
 
@@ -65,7 +65,7 @@ public class DoublyLinkedNode {
 	 * Change the Node preceding this Node.
 	 * @param next Node to precede this one
 	 */
-	public void setPrev(DoublyLinkedNode prev) {
+	public void setPrev(DoublyLinkedNode<T> prev) {
 		this.prev = prev;
 	}
 
