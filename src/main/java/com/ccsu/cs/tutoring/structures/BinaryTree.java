@@ -231,7 +231,7 @@ public class BinaryTree implements BinaryTreeInterface {
 	/** Print all Nodes in top-down, left-to-right order. */
 	public void levelOrderTraverse() {
 		if (root != null) {
-			Queue<BinaryTreeNode> toVisit = new LinkedList<BinaryTreeNode>(); // TODO: replace with own generic version(s)?
+			Queue<BinaryTreeNode> toVisit = new LinkedList<BinaryTreeNode>();
 			toVisit.add(root);
 			while (!toVisit.isEmpty()) {
 				BinaryTreeNode current = toVisit.remove();
