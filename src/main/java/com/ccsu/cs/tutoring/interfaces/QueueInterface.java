@@ -6,5 +6,6 @@ public interface QueueInterface {
 	int front();
 	int size();
 	boolean empty();
+	boolean full();
 	void traverse();
 }

@@ -33,6 +33,14 @@ public class DoublyLinkedList implements DoublyLinkedListInterface {
 	}
 
 	/**
+	 * Checks if this DLL can still accept more Nodes.
+	 * @return true if too large
+	 */
+	public boolean full() {
+		return size >= Integer.MAX_VALUE;
+	}
+
+	/**
 	 * @return size the DoublyLinkedList
 	 */
 	public int size() { // 0(1)
@@ -45,11 +53,13 @@ public class DoublyLinkedList implements DoublyLinkedListInterface {
 	 * @param data to add, replacing previous head
 	 */
 	public void insertFirst(int data) { // O(1)
-		DoublyLinkedNode oldFirst = head.getNext();
-		DoublyLinkedNode newFirst = new DoublyLinkedNode(data, oldFirst, head);
-		oldFirst.setPrev(newFirst);
-		head.setNext(newFirst);
-		size++;
+		if (!full()) {
+			DoublyLinkedNode oldFirst = head.getNext();
+			DoublyLinkedNode newFirst = new DoublyLinkedNode(data, oldFirst, head);
+			oldFirst.setPrev(newFirst);
+			head.setNext(newFirst);
+			size++;
+		}
 	}
 	/**
 	 * Adds a new Node to the end of the list.

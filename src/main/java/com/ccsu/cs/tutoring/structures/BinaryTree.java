@@ -134,6 +134,14 @@ public class BinaryTree implements BinaryTreeInterface {
 	}
 
 	/**
+	 * Check if this Binary Tree can still accept more Nodes.
+	 * @return false if still has space for more BTNodes
+	 */
+	public boolean full() {
+		return size >= Integer.MAX_VALUE;
+	}
+
+	/**
 	 * Return the number of elements.
 	 * @return count of Nodes
 	 */

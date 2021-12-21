@@ -6,5 +6,6 @@ public interface StackInterface {
 	int ontop();
 	int size();
 	boolean empty();
+	boolean full();
 	void traverse();
 }

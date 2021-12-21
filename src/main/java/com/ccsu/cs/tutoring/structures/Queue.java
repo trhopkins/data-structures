@@ -74,6 +74,14 @@ public class Queue implements QueueInterface {
 		return size == 0; // front == null also works
 	}
 
+	/**
+	 * Check if this Queue can still add more Nodes.
+	 * @return true if cannot accept more Nodes
+	 */
+	public boolean full() {
+		return size >= Integer.MAX_VALUE;
+	}
+
 	/** Prints each Node on its own line. */
 	public void traverse() { // O(n)
 		Node current = front;

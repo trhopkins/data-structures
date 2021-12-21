@@ -28,10 +28,10 @@ public class CircularLinkedList implements LinkedListInterface {
 			Node newNode = new Node(data, null);
 			tail = newNode;
 			newNode.setNext(newNode);
-		} else {
+		} else if (!full()) {
 			Node newNode = new Node(data, tail.getNext());
 			tail.setNext(newNode);
-		}
+		} // else throw error for being too large?
 	}
 
 	/**
@@ -105,6 +105,14 @@ public class CircularLinkedList implements LinkedListInterface {
 	 */
 	public boolean empty() {
 		return tail == null;
+	}
+
+	/**
+	 * Check if this CLL is too large to accept more Nodes.
+	 * @return false if can accept more Nodes
+	 */
+	public boolean full() {
+		return size() >= Integer.MAX_VALUE;
 	}
 
 	/** Print each item in this CLL. */

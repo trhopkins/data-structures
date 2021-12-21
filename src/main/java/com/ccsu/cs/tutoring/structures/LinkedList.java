@@ -23,7 +23,9 @@ public class LinkedList implements LinkedListInterface {
 	 * @param data to add, replacing previous head
 	 */
 	public void insertFirst(int data) { // O(1)
-		head = new Node(data, head);
+		if (!full()) {
+			head = new Node(data, head);
+		} // else: throw error for being too large?
 	}
 
 	/** Removes/reassigns head Node. */
@@ -70,6 +72,14 @@ public class LinkedList implements LinkedListInterface {
 	 */
 	public boolean empty() { // O(1)
 		return head == null; // this.size() == 0 is O(n)
+	}
+
+	/**
+	 * Checks if this LL is full and cannot accept more Nodes.
+	 * @return false if has space to store more Nodes
+	 */
+	public boolean full() {
+		return size() >= Integer.MAX_VALUE;
 	}
 
 	/** Prints each Node on its own line. Similar to toString(). */

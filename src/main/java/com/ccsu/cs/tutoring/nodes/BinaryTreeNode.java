@@ -9,6 +9,12 @@ public class BinaryTreeNode {
 	private int data;
 	private BinaryTreeNode left, right;
 
+	/**
+	 * Constructor for BinaryTreeNodes. Can set as empty with BinaryTreeNode(0, null, null)
+	 * @param data to insert into the Node
+	 * @param left child, < this Node
+	 * @param right child, >= this Node
+	 */
 	public BinaryTreeNode(int data, BinaryTreeNode left, BinaryTreeNode right) {
 		this.data = data;
 		this.left = left;

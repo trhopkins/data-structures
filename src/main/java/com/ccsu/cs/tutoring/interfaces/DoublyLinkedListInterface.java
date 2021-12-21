@@ -5,9 +5,10 @@ public interface DoublyLinkedListInterface {
 	void insertLast(int item);
 	void deleteFirst();
 	void deleteLast();
-	int size();
 	int first();
 	int last();
+	int size();
 	boolean empty();
+	boolean full();
 	void traverse();
 }

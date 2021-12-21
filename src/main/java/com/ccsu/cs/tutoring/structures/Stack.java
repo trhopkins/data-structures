@@ -65,6 +65,14 @@ public class Stack implements StackInterface {
 		return top == null; // size == 0 also works
 	}
 
+	/**
+	 * Check if this Stack can still push more Nodes on.
+	 * @return true if cannot accept more Nodes due to size
+	 */
+	public boolean full() {
+		return size >= Integer.MAX_VALUE;
+	}
+
 	/** Prints each Node on its own line. */
 	public void traverse() { // O(n)
 		Stack tmp = new Stack();

@@ -6,5 +6,6 @@ public interface LinkedListInterface {
 	boolean search(int data);
 	int size();
 	boolean empty();
+	boolean full();
 	void traverse();
 }
