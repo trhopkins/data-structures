@@ -1,5 +1,7 @@
 package com.ccsu.cs.tutoring.structures;
 
+import java.util.ArrayList;
+
 import com.ccsu.cs.tutoring.interfaces.LinkedListInterface;
 import com.ccsu.cs.tutoring.nodes.Node;
 
@@ -9,9 +11,9 @@ import com.ccsu.cs.tutoring.nodes.Node;
  * @version 1.0.0
  * @see {@link https://www.baeldung.com/java-linkedlist}
  */
-public class LinkedList implements LinkedListInterface {
+public class LinkedList<T extends Comparable<T>> implements LinkedListInterface<T> {
 	// car = head, cdr = head.getNext() for you LISPers out there ;)
-	private Node head;
+	private Node<T> head;
 
 	/** Empty LinkedList Constructor. */
 	public LinkedList() {
@@ -19,11 +21,11 @@ public class LinkedList implements LinkedListInterface {
 	}
 
 	/**
-	 * Adds a new Node to the front of the list. 'Cons' operation. 
+	 * Adds a new Node to the front of the list. 'Cons' operation.
 	 * @param data to add, replacing previous head
 	 */
-	public void insertFirst(int data) { // O(1)
-		head = new Node(data, head);
+	public void insertFirst(T data) { // O(1)
+		head = new Node<>(data, head);
 	}
 
 	/** Removes/reassigns head Node. */
@@ -38,10 +40,10 @@ public class LinkedList implements LinkedListInterface {
 	 * @param key data to find
 	 * @return true if key data is found
 	 */
-	public boolean search(int key) { // O(n)
-		Node current = head;
+	public boolean search(T key) { // O(n)
+		Node<T> current = head;
 		while (current != null) {
-			if (current.getData() == key) {
+			if (current.getData().compareTo(key) == 0) {
 				return true;
 			} else {
 				current = current.getNext();
@@ -56,7 +58,7 @@ public class LinkedList implements LinkedListInterface {
 	 */
 	public int size() { // O(n) since size is not stored locally
 		int size = 0;
-		Node current = head;
+		Node<T> current = head;
 		while (current != null) {
 			current = current.getNext();
 			size++;
@@ -74,7 +76,7 @@ public class LinkedList implements LinkedListInterface {
 
 	/** Prints each Node on its own line. Similar to toString(). */
 	public void traverse() { // O(n)
-		Node current = head;
+		Node<T> current = head;
 		while (current != null) {
 			System.out.println(current);
 			current = current.getNext();
@@ -85,19 +87,20 @@ public class LinkedList implements LinkedListInterface {
 	 * Transforms this LinkedList into an array.
 	 * @return array of data corresponding to this LinkedList
 	 */
-  public int[] getKeys() { // for debugging
-		int[] keys = new int[size()];
-		Node current = head;
-		for (int index = 0; index < keys.length; index++) {
-			keys[index] = current.getData();
+	@SuppressWarnings("unchecked")
+	public T[] getKeys() {
+		ArrayList<T> keys = new ArrayList<>();
+		Node<T> current = head;
+		while (current != null) {
+			keys.add(current.getData());
 			current = current.getNext();
 		}
-		return keys;
+		return (T[]) keys.toArray(); // TODO: Type safety?
 	}
 
 	/** @return info about each Node on its own line. */
 	public String toString() { // O(n)
-		Node current = head;
+		Node<T> current = head;
 		String info = "";
 		while (current != null) {
 			info += current.toString() + "\n";

@@ -5,37 +5,37 @@ package com.ccsu.cs.tutoring.nodes;
  * @author Travis Hopkins
  * @version 1.0.0
  */
-public class DoublyLinkedNode {
-	private int data;
-	private DoublyLinkedNode next, prev;
+public class DoublyLinkedNode<T extends Comparable<T>> {
+	private T data;
+	private DoublyLinkedNode<T> next, prev;
 
-	public DoublyLinkedNode(int data, DoublyLinkedNode next, DoublyLinkedNode prev) {
+	public DoublyLinkedNode(T data, DoublyLinkedNode<T> next, DoublyLinkedNode<T> prev) {
 		this.data = data;
 		this.next = next;
 		this.prev = prev;
 	}
 
-	public void setData(int data) {
+	public void setData(T data) {
 		this.data = data;
 	}
 
-	public void setNext(DoublyLinkedNode next) {
+	public void setNext(DoublyLinkedNode<T> next) {
 		this.next = next;
 	}
 
-	public void setPrev(DoublyLinkedNode prev) {
+	public void setPrev(DoublyLinkedNode<T> prev) {
 		this.prev = prev;
 	}
 
-	public int getData() {
+	public T getData() {
 		return data;
 	}
 
-	public DoublyLinkedNode getNext() {
+	public DoublyLinkedNode<T> getNext() {
 		return next;
 	}
 
-	public DoublyLinkedNode getPrev() {
+	public DoublyLinkedNode<T> getPrev() {
 		return prev;
 	}
 

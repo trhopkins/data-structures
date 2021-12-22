@@ -1,9 +1,9 @@
 package com.ccsu.cs.tutoring.interfaces;
 
-public interface QueueInterface {
-	void enqueue(int data);
-	int dequeue();
-	int front();
+public interface QueueInterface<T> {
+	void enqueue(T data);
+	T dequeue();
+	T front();
 	int size();
 	boolean empty();
 	void traverse();

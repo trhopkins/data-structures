@@ -5,37 +5,37 @@ package com.ccsu.cs.tutoring.nodes;
  * @author Travis Hopkins
  * @version 1.0.0
  */
-public class BinaryTreeNode {
-	private int data;
-	private BinaryTreeNode left, right;
+public class BinaryTreeNode<T> {
+	private T data;
+	private BinaryTreeNode<T> left, right;
 
-	public BinaryTreeNode(int data, BinaryTreeNode left, BinaryTreeNode right) {
+	public BinaryTreeNode(T data, BinaryTreeNode<T> left, BinaryTreeNode<T> right) {
 		this.data = data;
 		this.left = left;
 		this.right = right;
 	}
 
-	public int getData() {
+	public T getData() {
 		return data;
 	}
 
-	public BinaryTreeNode getLeft() {
+	public BinaryTreeNode<T> getLeft() {
 		return left;
 	}
 
-	public BinaryTreeNode getRight() {
+	public BinaryTreeNode<T> getRight() {
 		return right;
 	}
 
-	public void setData(int data) {
+	public void setData(T data) {
 		this.data = data;
 	}
 
-	public void setLeft(BinaryTreeNode left) {
+	public void setLeft(BinaryTreeNode<T> left) {
 		this.left = left;
 	}
 
-	public void setRight(BinaryTreeNode right) {
+	public void setRight(BinaryTreeNode<T> right) {
 		this.right = right;
 	}
 
