@@ -135,11 +135,7 @@ public class CircularLinkedList<T> implements LinkedListInterface<T> {
 			Node<T> current = tail;
 			do {
 				current = current.getNext();
-				if (current != tail) {
-					info += String.valueOf(current) + "\n";
-				} else {
-					info += String.valueOf(current);
-				}
+				info += String.valueOf(current) + "\n";
 			} while (current != tail);
 		} else {
 			info += "empty Circular Linked List.";

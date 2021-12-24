@@ -1,19 +1,19 @@
 package com.ccsu.cs.tutoring;
 
-import com.ccsu.cs.tutoring.structures.LinkedList;
+import com.ccsu.cs.tutoring.structures.CircularLinkedList;
 import org.junit.jupiter.api.Test; // for Test annotations
 import org.junit.jupiter.api.Assertions; // for tests themselves
 
-public class LinkedListTest {
+public class CircularLinkedListTest {
 	@Test
 	void linkedListStartsEmpty() {
-		LinkedList<Object> list = new LinkedList<Object>();
+		CircularLinkedList<Object> list = new CircularLinkedList<Object>();
 		Assertions.assertTrue(list.empty());
 	}
 
 	@Test
 	void addingFiveElementsMakesSizeFive() {
-		LinkedList<Integer> list = new LinkedList<>();
+		CircularLinkedList<Integer> list = new CircularLinkedList<>();
 		list.insertFirst(0);
 		list.insertFirst(8);
 		list.insertFirst(9);
@@ -24,7 +24,7 @@ public class LinkedListTest {
 
 	@Test
 	void deletingElementsReducesSize() {
-		LinkedList<Character> list = new LinkedList<>();
+		CircularLinkedList<Character> list = new CircularLinkedList<>();
 		int oldSize, newSize;
 		list.insertFirst('a');
 		list.insertFirst('b');
@@ -39,18 +39,29 @@ public class LinkedListTest {
 
 	@Test
 	void toStringWorksForIntegers() {
-		LinkedList<Integer> list = new LinkedList<>();
+		CircularLinkedList<Integer> list = new CircularLinkedList<>();
 		list.insertFirst(5);
 		list.insertFirst(3);
 		list.insertFirst(10);
-		String correctToString = "10\n3\n5\n"; // note FILO order
-		Assertions.assertTrue(list.toString().equals(correctToString));
+		Assertions.assertTrue(list.toString().equals("10\n3\n5\n"));
 	}
 
 	@Test
 	void addingElementsMakesEmptyFalse() {
-		LinkedList<Integer> list = new LinkedList<>();
+		CircularLinkedList<Integer> list = new CircularLinkedList<>();
 		list.insertFirst(5);
 		Assertions.assertFalse(list.empty());
+	}
+
+	@Test
+	void insertLastmakesElementLast() {
+		CircularLinkedList<Character> list = new CircularLinkedList<>();
+		list.insertFirst('a'); // a
+		list.insertFirst('b'); // b a
+		list.insertFirst('c'); // c b a
+		list.insertFirst('d'); // d c b a
+		Assertions.assertTrue(list.toString().equals("d\nc\nb\na\n"));
+		list.insertLast('e'); // d c b a e
+		Assertions.assertTrue(list.toString().equals("d\nc\nb\na\ne\n"));
 	}
 }
