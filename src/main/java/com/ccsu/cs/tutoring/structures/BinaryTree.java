@@ -75,35 +75,33 @@ public class BinaryTree<T extends Comparable<T>> implements BinaryTreeInterface<
 	 * @return subtree starting with current Node's L/R child to replace current one
 	 */
 	private BinaryTreeNode<T> recursiveDelete(BinaryTreeNode<T> root, T key) {
-		if (root == null) { // empty
-			return null;
-		}
-		if (key == root.getData()) { // found it!
-			replaceNodeWithDescendant(root);
-		//} else if (key < root.getData()) { // try left
-		} else if (key.compareTo(root.getData()) < 0) { // try left
+        if (root == null) { // went past leaf
+            return null;
+        } else if (key.compareTo(root.getData()) == 0) { // found it
+            return replaceWithDescendent(root);
+        } else if (key.compareTo(root.getData()) < 0) { // try left
 			root.setLeft(recursiveDelete(root.getLeft(), key));
-		} else { // try right
+        } else { // try right
 			root.setRight(recursiveDelete(root.getRight(), key));
 		}
-		return root; // new subtree
-	}
+		return root;
+    }
 
 	/**
-	 * When deleting a Node with children, determine which descendant
-	 * Node should replace this.
-	 * @param root deleted Node to replace
-	 * @return new subtree in deleted Node's place
+	 * Once a node has been located, walk down the tree until a replacement is found.
+	 * @param root current node to search along
+	 * @return subtree to replace the current one
 	 */
-	private BinaryTreeNode<T> replaceNodeWithDescendant(BinaryTreeNode<T> root) {
-		if (root.getLeft() == null && root.getRight() == null) { // no children (leaf)
-			return null;
-		} else if (root.getLeft() == null) { // one right child
-			return root.getRight();
-		} else if (root.getRight() == null) { // one left child
-			return root.getLeft();
-		} else { // two children
-			T smallestValue = findSmallestDescendent(root.getRight()); // mutual recursion!
+	private BinaryTreeNode<T> replaceWithDescendent(BinaryTreeNode<T> root) {
+		// Case 1: no children
+		if (root.getLeft() == null && root.getRight() == null) {
+		    return null;
+		} else if (root.getRight() == null) { // Case 2: 1 child
+		    return root.getLeft();
+		} else if (root.getLeft() == null) {
+		    return root.getRight();
+		} else { // Case 3: 2 children
+			T smallestValue = findSmallestDescendent(root.getRight());
 			root.setData(smallestValue);
 			root.setRight(recursiveDelete(root.getRight(), smallestValue));
 			return root;
