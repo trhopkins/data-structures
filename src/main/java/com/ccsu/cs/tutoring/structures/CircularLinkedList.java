@@ -9,8 +9,8 @@ import com.ccsu.cs.tutoring.nodes.Node;
  * @version 1.0.0
  * @see {@link https://www.baeldung.com/java-circular-linked-list}
  */
-public class CircularLinkedList implements LinkedListInterface {
-	private Node tail;
+public class CircularLinkedList<T> implements LinkedListInterface<T> {
+	private Node<T> tail;
 
 	/**
 	 * Empty CLL constructor.
@@ -23,28 +23,28 @@ public class CircularLinkedList implements LinkedListInterface {
 	 * Add another element to the CLL.
 	 * @param data to add the the CLL
 	 */
-	public void insertFirst(int data) {
+	public void insertFirst(T data) {
 		if (empty()) {
-			Node newNode = new Node(data, null);
+			Node<T> newNode = new Node<T>(data, null);
 			tail = newNode;
 			newNode.setNext(newNode);
-		} else {
-			Node newNode = new Node(data, tail.getNext());
+		} else if (!full()) {
+			Node<T> newNode = new Node<T>(data, tail.getNext());
 			tail.setNext(newNode);
-		}
+		} // else throw error for being too large?
 	}
 
 	/**
 	 * Append another item to the CLL.
 	 * @param data to add
 	 */
-	public void insertLast(int data) {
+	public void insertLast(T data) {
 		if (empty()) {
-			Node newNode = new Node(data, null);
+			Node<T> newNode = new Node<T>(data, null);
 			tail = newNode;
 			newNode.setNext(newNode);
 		} else {
-			Node newNode = new Node(data, tail.getNext());
+			Node<T> newNode = new Node<T>(data, tail.getNext());
 			tail.setNext(newNode);
 			tail = newNode;
 		}
@@ -66,11 +66,11 @@ public class CircularLinkedList implements LinkedListInterface {
 	 * @param key to search for
 	 * @return true if item is found in CLL.
 	 */
-	public boolean search(int key) {
+	public boolean search(T key) {
 		if (tail == null) {
 			return false;
 		} else {
-			Node current = tail.getNext();
+			Node<T> current = tail.getNext();
 			do {
 				if (current.getData() == key) {
 					return true;
@@ -89,7 +89,7 @@ public class CircularLinkedList implements LinkedListInterface {
 		if (tail == null) {
 			return 0;
 		} else {
-			Node current = tail;
+			Node<T> current = tail;
 			int size = 0;
 			do {
 				current = current.getNext();
@@ -107,10 +107,18 @@ public class CircularLinkedList implements LinkedListInterface {
 		return tail == null;
 	}
 
+	/**
+	 * Check if this CLL is too large to accept more Nodes.
+	 * @return false if can accept more Nodes
+	 */
+	public boolean full() {
+		return size() >= Integer.MAX_VALUE;
+	}
+
 	/** Print each item in this CLL. */
 	public void traverse() {
 		if (!empty()) {
-			Node current = tail;
+			Node<T> current = tail;
 			do {
 				current = current.getNext();
 				System.out.println(current);
@@ -119,33 +127,15 @@ public class CircularLinkedList implements LinkedListInterface {
 	}
 
 	/**
-	 * Turn data elements from a Linked List to an array for debugging.
-	 * @return array of CLL contents
-	 */
-	public int[] getKeys() {
-		int[] keys = new int[size()];
-		Node current = tail.getNext();
-		for (int index = 0; index < keys.length; index++) {
-			keys[index] = current.getData();
-			current = current.getNext();
-		}
-		return keys;
-	}
-
-	/**
 	 * @return String representation of each element.
 	 */
 	public String toString() {
 		String info = "";
 		if (!empty()) {
-			Node current = tail;
+			Node<T> current = tail;
 			do {
 				current = current.getNext();
-				if (current != tail) {
-					info += String.valueOf(current) + "\n";
-				} else {
-					info += String.valueOf(current);
-				}
+				info += String.valueOf(current) + "\n";
 			} while (current != tail);
 		} else {
 			info += "empty Circular Linked List.";

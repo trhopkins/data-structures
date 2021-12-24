@@ -9,9 +9,9 @@ import com.ccsu.cs.tutoring.nodes.Node;
  * @version 1.0.0
  * @see {@link https://www.baeldung.com/java-queue}
  */
-public class Queue implements QueueInterface {
-	private Node front;
-	private Node rear;
+public class Queue<T> implements QueueInterface<T> {
+	private Node<T> front;
+	private Node<T> rear;
 	private int size; // keeping internal count prevents O(n) size()
 
 	/** Constructor. Starts empty */
@@ -24,8 +24,8 @@ public class Queue implements QueueInterface {
 	 * Inserts a Node as the new rear of this Queue.
 	 * @param data to add to Queue
 	 */
-	public void enqueue(int data) { // O(1)
-		Node newNode = new Node(data, null);
+	public void enqueue(T data) { // O(1)
+		Node<T> newNode = new Node<T>(data, null);
 
 		if (empty()) {
 			front = newNode;
@@ -40,8 +40,8 @@ public class Queue implements QueueInterface {
 	 * Removes/returns/reassigns the front.
 	 * @return front Node's data
 	 */
-	public int dequeue() { // O(1)
-		int frontValue = front.getData();
+	public T dequeue() { // O(1)
+		T frontValue = front.getData();
 		front = front.getNext();
 		size--; // placed before empty() due to size check
 		if (empty()) {
@@ -54,7 +54,7 @@ public class Queue implements QueueInterface {
 	 * Like dequeue() but without modifying the Queue.
 	 * @return front Node's data
 	 */
-	public int front() { // O(1)
+	public T front() { // O(1)
 		return front.getData();
 	}
 
@@ -74,9 +74,17 @@ public class Queue implements QueueInterface {
 		return size == 0; // front == null also works
 	}
 
+	/**
+	 * Check if this Queue can still add more Nodes.
+	 * @return true if cannot accept more Nodes
+	 */
+	public boolean full() {
+		return size >= Integer.MAX_VALUE;
+	}
+
 	/** Prints each Node on its own line. */
 	public void traverse() { // O(n)
-		Node current = front;
+		Node<T> current = front;
 		while (current != null) {
 			System.out.println(current);
 			current = current.getNext();
@@ -84,24 +92,10 @@ public class Queue implements QueueInterface {
 	}
 
 	/**
-	 * Transforms this Queue into an array.
-	 * @return array of data corresponding to this Queue
-	 */
-	public int[] getKeys() {
-		int[] keys = new int[size()];
-		Node current = front;
-		for (int index = 0; index < keys.length; index++) {
-			keys[index] = current.getData();
-			current = current.getNext();
-		}
-		return keys;
-	}
-
-	/**
 	 * @return info about each Node on its own line.
 	 */
 	public String toString() { // O(n)
-		Node current = front;
+		Node<T> current = front;
 		String info = "";
 		while (current != null) {
 			info += current.toString() + "\n";
