@@ -43,8 +43,7 @@ public class StackTest {
 		stack.push(5);
 		stack.push(3);
 		stack.push(10);
-		String correctToString = "10\n3\n5\n"; // note FILO order
-		Assertions.assertTrue(stack.toString().equals(correctToString));
+		Assertions.assertEquals(stack.toString(), "10\n3\n5\n");
 	}
 
 	@Test

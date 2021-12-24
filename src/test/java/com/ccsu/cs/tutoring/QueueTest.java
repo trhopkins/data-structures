@@ -43,8 +43,7 @@ public class QueueTest {
 		queue.enqueue(5);
 		queue.enqueue(3);
 		queue.enqueue(10);
-		String correctToString = "5\n3\n10\n"; // note FIFO order
-		Assertions.assertTrue(queue.toString().equals(correctToString));
+		Assertions.assertEquals(queue.toString(), "5\n3\n10\n");
 	}
 
 	@Test

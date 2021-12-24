@@ -1,19 +1,19 @@
 package com.ccsu.cs.tutoring;
 
-import com.ccsu.cs.tutoring.structures.CircularLinkedList;
+import com.ccsu.cs.tutoring.structures.DoublyLinkedList;
 import org.junit.jupiter.api.Test; // for Test annotations
 import org.junit.jupiter.api.Assertions; // for tests themselves
 
-public class CircularLinkedListTest {
+public class DoublyLinkedListTest {
 	@Test
 	void linkedListStartsEmpty() {
-		CircularLinkedList<Object> list = new CircularLinkedList<Object>();
+		DoublyLinkedList<Object> list = new DoublyLinkedList<Object>();
 		Assertions.assertTrue(list.empty());
 	}
 
 	@Test
 	void addingFiveElementsMakesSizeFive() {
-		CircularLinkedList<Integer> list = new CircularLinkedList<>();
+		DoublyLinkedList<Integer> list = new DoublyLinkedList<>();
 		list.insertFirst(0);
 		list.insertFirst(8);
 		list.insertFirst(9);
@@ -24,7 +24,7 @@ public class CircularLinkedListTest {
 
 	@Test
 	void deletingElementsReducesSize() {
-		CircularLinkedList<Character> list = new CircularLinkedList<>();
+		DoublyLinkedList<Character> list = new DoublyLinkedList<>();
 		int oldSize, newSize;
 		list.insertFirst('a');
 		list.insertFirst('b');
@@ -39,7 +39,7 @@ public class CircularLinkedListTest {
 
 	@Test
 	void toStringWorksForIntegers() {
-		CircularLinkedList<Integer> list = new CircularLinkedList<>();
+		DoublyLinkedList<Integer> list = new DoublyLinkedList<>();
 		list.insertFirst(5);
 		list.insertFirst(3);
 		list.insertFirst(10);
@@ -48,19 +48,41 @@ public class CircularLinkedListTest {
 
 	@Test
 	void addingElementsMakesEmptyFalse() {
-		CircularLinkedList<Integer> list = new CircularLinkedList<>();
+		DoublyLinkedList<Integer> list = new DoublyLinkedList<>();
 		list.insertFirst(5);
 		Assertions.assertFalse(list.empty());
 	}
 
 	@Test
 	void insertLastmakesElementLast() {
-		CircularLinkedList<Character> list = new CircularLinkedList<>();
+		DoublyLinkedList<Character> list = new DoublyLinkedList<>();
 		list.insertFirst('a'); // a
 		list.insertFirst('b'); // b a
 		list.insertFirst('c'); // c b a
 		list.insertFirst('d'); // d c b a
-		list.insertLast('e'); // d c b a e
+		list.insertLast('e');  // d c b a e
 		Assertions.assertEquals(list.toString(), "d\nc\nb\na\ne\n");
+	}
+
+	@Test
+	void deletingFirstPreservesOrder() {
+		DoublyLinkedList<Character> list = new DoublyLinkedList<>();
+		list.insertFirst('a'); // a
+		list.insertFirst('b'); // b a
+		list.insertFirst('c'); // c b a
+		list.deleteFirst(); // b a
+		list.insertFirst('d'); // d b a
+		Assertions.assertEquals(list.toString(), "d\nb\na\n");
+	}
+
+	@Test
+	void deletingLastPreservesOrder() {
+		DoublyLinkedList<Character> list = new DoublyLinkedList<>();
+		list.insertLast('a'); // a
+		list.insertLast('b'); // a b
+		list.insertLast('c'); // a b c
+		list.deleteLast(); // a b
+		list.insertLast('d'); // a b d
+		Assertions.assertEquals(list.toString(), "a\nb\nd\n");
 	}
 }

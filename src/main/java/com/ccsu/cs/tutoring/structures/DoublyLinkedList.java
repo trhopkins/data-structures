@@ -7,7 +7,7 @@ import com.ccsu.cs.tutoring.nodes.DoublyLinkedNode;
  * Doubly Linked List ADT using Doubly Linked integer Nodes.
  * @author Travis Hopkins
  * @author Roland Van Duine
- * @version 1.0.1
+ * @version 1.0.2
  * @see {@link https://www.baeldung.com/cs/linked-list-data-structure}
  */
 public class DoublyLinkedList<T> implements DoublyLinkedListInterface<T> {
@@ -21,6 +21,7 @@ public class DoublyLinkedList<T> implements DoublyLinkedListInterface<T> {
 	public DoublyLinkedList() {
 		head = new DoublyLinkedNode<T>(null, tail, null);
 		tail = new DoublyLinkedNode<T>(null, null, head);
+		head.setNext(tail); // was previously null
 		size = 0;
 	}
 
@@ -55,12 +56,13 @@ public class DoublyLinkedList<T> implements DoublyLinkedListInterface<T> {
 	public void insertFirst(T data) { // O(1)
 		if (!full()) {
 			DoublyLinkedNode<T> oldFirst = head.getNext();
-			DoublyLinkedNode<T> newFirst = new DoublyLinkedNode<T>(data, oldFirst, head);
+			DoublyLinkedNode<T> newFirst = new DoublyLinkedNode<>(data, oldFirst, head);
 			oldFirst.setPrev(newFirst);
 			head.setNext(newFirst);
 			size++;
 		}
 	}
+
 	/**
 	 * Adds a new Node to the end of the list.
 	 * Updates the previous node's next node

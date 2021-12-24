@@ -43,8 +43,7 @@ public class LinkedListTest {
 		list.insertFirst(5);
 		list.insertFirst(3);
 		list.insertFirst(10);
-		String correctToString = "10\n3\n5\n"; // note FILO order
-		Assertions.assertTrue(list.toString().equals(correctToString));
+		Assertions.assertEquals(list.toString(), "10\n3\n5\n");
 	}
 
 	@Test

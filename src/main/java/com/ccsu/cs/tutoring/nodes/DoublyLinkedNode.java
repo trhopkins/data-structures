@@ -63,7 +63,7 @@ public class DoublyLinkedNode<T> {
 
 	/**
 	 * Change the Node preceding this Node.
-	 * @param next Node to precede this one
+	 * @param prev Node to precede this one
 	 */
 	public void setPrev(DoublyLinkedNode<T> prev) {
 		this.prev = prev;

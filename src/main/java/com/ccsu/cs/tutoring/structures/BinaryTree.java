@@ -1,24 +1,24 @@
 package com.ccsu.cs.tutoring.structures;
 
-import java.util.Queue;
-import java.util.LinkedList;
 import com.ccsu.cs.tutoring.nodes.BinaryTreeNode;
 import com.ccsu.cs.tutoring.interfaces.BinaryTreeInterface;
 
 /**
  * Binary tree containing integer nodes.
  * @author Travis Hopkins
- * @version 1.0.0
+ * @version 1.0.1
  * @see {@link https://www.baeldung.com/java-binary-tree}
  */
 public class BinaryTree<T extends Comparable<T>> implements BinaryTreeInterface<T> {
 	private BinaryTreeNode<T> root;
 	private int size;
+	private String info; // required for recursiveToString. Should find a way which doesn't require global variables
 
 	/** Empty Binary Tree constructor. */
 	public BinaryTree() {
 		root = null;
 		size = 0;
+		info = "";
 	}
 
 	/**
@@ -35,7 +35,7 @@ public class BinaryTree<T extends Comparable<T>> implements BinaryTreeInterface<
 	 * @param data to add to the Binary Tree
 	 */
 	public void insert(T data) {
-		recursiveInsert(root, data);
+		root = recursiveInsert(root, data);
 		size++;
 	}
 
@@ -61,7 +61,7 @@ public class BinaryTree<T extends Comparable<T>> implements BinaryTreeInterface<
 
 	/**
 	 * Find a Node matching a given input and remove it, possibly
-	 * replacing it with an ancestor.
+	 * replacing it with a descendant.
 	 * @param key data to search for
 	 */
 	public void delete(T key) {
@@ -71,7 +71,7 @@ public class BinaryTree<T extends Comparable<T>> implements BinaryTreeInterface<
 
 	/**
 	 * Walk down the tree until the correct data value is located, then
-	 * replace it with an ancestor Node if necessary.
+	 * replace it with an descendant Node if necessary.
 	 * @param root current Node to compare against key
 	 * @param key value to search for. If found, replace or delete
 	 * @return subtree starting with current Node's L/R child to replace current one
@@ -81,7 +81,7 @@ public class BinaryTree<T extends Comparable<T>> implements BinaryTreeInterface<
 			return null;
 		}
 		if (key == root.getData()) { // found it!
-			replaceNodeWithAncestor(root);
+			replaceNodeWithDescendant(root);
 		//} else if (key < root.getData()) { // try left
 		} else if (key.compareTo(root.getData()) == -1) { // try left
 			root.setLeft(recursiveDelete(root.getLeft(), key));
@@ -92,12 +92,12 @@ public class BinaryTree<T extends Comparable<T>> implements BinaryTreeInterface<
 	}
 
 	/**
-	 * When deleting a Node with children, determine which ancestor
+	 * When deleting a Node with children, determine which descendant
 	 * Node should replace this.
 	 * @param root deleted Node to replace
 	 * @return new subtree in deleted Node's place
 	 */
-	private BinaryTreeNode<T> replaceNodeWithAncestor(BinaryTreeNode<T> root) {
+	private BinaryTreeNode<T> replaceNodeWithDescendant(BinaryTreeNode<T> root) {
 		if (root.getLeft() == null && root.getRight() == null) { // no children (leaf)
 			return null;
 		} else if (root.getLeft() == null) { // one right child
@@ -105,7 +105,7 @@ public class BinaryTree<T extends Comparable<T>> implements BinaryTreeInterface<
 		} else if (root.getRight() == null) { // one left child
 			return root.getLeft();
 		} else { // two children
-			T smallestValue = findSmallestAncestor(root.getRight()); // mutual recursion!
+			T smallestValue = findSmallestDescendent(root.getRight()); // mutual recursion!
 			root.setData(smallestValue);
 			root.setRight(recursiveDelete(root.getRight(), smallestValue));
 			return root;
@@ -113,12 +113,12 @@ public class BinaryTree<T extends Comparable<T>> implements BinaryTreeInterface<
 	}
 
 	/**
-	 * Search for current Node's smallest ancestor and return its value.
+	 * Search for current Node's smallest descendent and return its value.
 	 * @param root current Node to search below
-	 * @return value of the smallest ancestor Node
+	 * @return value of the smallest descendent Node
 	 */
-	private T findSmallestAncestor(BinaryTreeNode<T> root) {
-		return root.getLeft() == null ? root.getData() : findSmallestAncestor(root.getRight());
+	private T findSmallestDescendent(BinaryTreeNode<T> root) {
+		return root.getLeft() == null ? root.getData() : findSmallestDescendent(root.getRight());
 	}
 
 	/** Empty the tree. */
@@ -211,6 +211,33 @@ public class BinaryTree<T extends Comparable<T>> implements BinaryTreeInterface<
 		}
 	}
 
+	/**
+	 * Traverse from root to leaves, then count the jumps on the way up.
+	 * @return number of levels in this tree
+	 */
+	public int height() {
+		return recursiveHeight(root);
+	}
+
+	/**
+	 * Get height of a given Node by querying its children.
+	 * @param root Node to check height of
+	 * @return number of levels in this tree
+	 */
+	public int recursiveHeight(BinaryTreeNode<T> root) {
+		if (root.getLeft() == null && root.getRight() == null) { // leaf
+			return 1;
+		} else if (root.getLeft() == null) { // one child
+			return 1 + recursiveHeight(root.getRight());
+		} else if (root.getRight() == null) { // one child
+			return 1 + recursiveHeight(root.getLeft());
+		} else { // choose larger of two children
+			int leftHeight = recursiveHeight(root.getLeft());
+			int rightHeight = recursiveHeight(root.getRight());
+			return leftHeight > rightHeight ? 1 + leftHeight : 1 + rightHeight; // feelin' cute, might delete later
+		}
+	}
+
 	/** Print all Nodes. Defaults to in-order traversal. */
 	public void traverse() {
 		inOrderTraverse();
@@ -234,16 +261,16 @@ public class BinaryTree<T extends Comparable<T>> implements BinaryTreeInterface<
 	/** Print all Nodes in top-down, left-to-right order. */
 	public void levelOrderTraverse() {
 		if (root != null) {
-			Queue<BinaryTreeNode<T>> toVisit = new LinkedList<BinaryTreeNode<T>>();
-			toVisit.add(root);
-			while (!toVisit.isEmpty()) {
-				BinaryTreeNode<T> current = toVisit.remove();
+			Queue<BinaryTreeNode<T>> toVisit = new Queue<>();
+			toVisit.enqueue(root);
+			while (!toVisit.empty()) {
+				BinaryTreeNode<T> current = toVisit.dequeue();
 				System.out.println(current);
 				if (current.getLeft() != null) {
-					toVisit.add(current.getLeft());
+					toVisit.enqueue(current.getLeft());
 				}
 				if (current.getRight() != null) {
-					toVisit.add(current.getRight());
+					toVisit.enqueue(current.getRight());
 				}
 			}
 		}
@@ -274,5 +301,25 @@ public class BinaryTree<T extends Comparable<T>> implements BinaryTreeInterface<
 			recursiveInOrderTraverse(root.getRight());
 			System.out.println(root);
 		} // else {System.out.println("null");}
+	}
+
+	/** @return String representation of this Binary Tree. */
+	public String toString() {
+		return recursiveToString(root);
+	}
+
+	/**
+	 * Gradually build up a String representation of the tree. Follows left-root-right order.
+	 * @param root current Node to build with
+	 * @param info current String to build into
+	 * @return info String with subtree toStrings appended
+	 */
+	private String recursiveToString(BinaryTreeNode<T> root) { // find a way that doesn't require global variables?
+		if (root != null) {
+			recursiveToString(root.getLeft()); // in-order traversal
+			info += root.toString() + "\n";
+			recursiveToString(root.getRight());
+		}
+		return info;
 	}
 }
