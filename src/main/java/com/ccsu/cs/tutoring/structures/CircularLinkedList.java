@@ -117,13 +117,7 @@ public class CircularLinkedList<T> implements LinkedListInterface<T> {
 
 	/** Print each item in this CLL. */
 	public void traverse() {
-		if (!empty()) {
-			Node<T> current = tail;
-			do {
-				current = current.getNext();
-				System.out.println(current);
-			} while (current != tail);
-		}
+		System.out.print(this);
 	}
 
 	/**

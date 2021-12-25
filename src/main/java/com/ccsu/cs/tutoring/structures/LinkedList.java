@@ -83,12 +83,8 @@ public class LinkedList<T> implements LinkedListInterface<T> {
 	}
 
 	/** Prints each Node on its own line. Similar to toString(). */
-	public void traverse() { // O(n)
-		Node<T> current = head;
-		while (current != null) {
-			System.out.println(current);
-			current = current.getNext();
-		}
+	public void traverse() {
+		System.out.print(this);
 	}
 
 	/** @return info about each Node on its own line. */

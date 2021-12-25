@@ -83,12 +83,8 @@ public class Queue<T> implements QueueInterface<T> {
 	}
 
 	/** Prints each Node on its own line. */
-	public void traverse() { // O(n)
-		Node<T> current = front;
-		while (current != null) {
-			System.out.println(current);
-			current = current.getNext();
-		}
+	public void traverse() {
+		System.out.print(this);
 	}
 
 	/**

@@ -144,12 +144,8 @@ public class DoublyLinkedList<T> implements DoublyLinkedListInterface<T> {
 	}
 
 	/** Prints each Node on its own line. Similar to toString().  */
-	public void traverse() { // O(n)
-		DoublyLinkedNode<T> current = head.getNext();
-		while (current != tail) {
-			System.out.println(current);
-			current = current.getNext();
-		}
+	public void traverse() {
+		System.out.print(this);
 	}
 
 	/**

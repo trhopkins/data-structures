@@ -235,7 +235,7 @@ public class BinaryTree<T extends Comparable<T>> implements BinaryTreeInterface<
 
 	/** Print all Nodes. Defaults to in-order traversal. */
 	public void traverse() {
-		inOrderTraverse();
+		System.out.print(this);
 	}
 
 	/** Print all Nodes in left-root-right order. */

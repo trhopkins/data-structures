@@ -74,15 +74,8 @@ public class Stack<T> implements StackInterface<T> {
 	}
 
 	/** Prints each Node on its own line. */
-	public void traverse() { // O(n)
-		Stack<T> tmp = new Stack<T>();
-		while (!empty()) {
-			System.out.println(top);
-			tmp.push(pop());
-		}
-		while (!tmp.empty()) {
-			push(tmp.pop());
-		}
+	public void traverse() {
+		System.out.println(this);
 	}
 
 	/** @return each Node's information on its own line */
