@@ -12,7 +12,7 @@ import com.ccsu.cs.tutoring.interfaces.BinaryTreeInterface;
 public class BinaryTree<T extends Comparable<T>> implements BinaryTreeInterface<T> {
 	private BinaryTreeNode<T> root;
 	private int size;
-	private String info = ""; // required for recursiveToString. Should find a way which doesn't require global variables
+	private String info = ""; // find a way which doesn't require global variables baka
 
 	/** Empty Binary Tree constructor. */
 	public BinaryTree() {
@@ -235,7 +235,7 @@ public class BinaryTree<T extends Comparable<T>> implements BinaryTreeInterface<
 
 	/** Print all Nodes. Defaults to in-order traversal. */
 	public void traverse() {
-		System.out.print(this);
+		inOrderTraverse();
 	}
 
 	/** Print all Nodes in left-root-right order. */
