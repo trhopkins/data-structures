@@ -10,7 +10,7 @@ public class AVLNode<T extends Comparable<T>> {
 		this.setData(data);
 		this.setLeft(left);
 		this.setRight(right);
-		this.setHeight(0);
+		this.setHeight(1);
 	}
 
 	public int getHeight() {
@@ -43,5 +43,9 @@ public class AVLNode<T extends Comparable<T>> {
 
 	public void setData(T data) {
 		this.data = data;
+	}
+
+	public String toString() {
+		return String.valueOf(data);
 	}
 }

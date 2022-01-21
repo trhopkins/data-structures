@@ -34,4 +34,36 @@ public class AVLTreeTest {
 		newSize = tree.size(); // 2
 		Assertions.assertTrue(oldSize > newSize);
 	}
+
+	@Test
+	void rebalancePreventsHeightIncrease() {
+		AVLTree<Integer> tree = new AVLTree<>();
+		tree.insert(5); // height = 1
+		tree.insert(7); // height = 2
+		tree.insert(1); // height = 2
+		tree.insert(9); // height = 3
+		tree.insert(3); // height = 3
+		Assertions.assertEquals(3, tree.height());
+		tree.insert(4); // height = 3 after rebalance, 4 without
+		Assertions.assertEquals(3, tree.height());
+	}
+
+	@Test
+	void leftRebalancePreservesOrder() {
+		AVLTree<Character> tree = new AVLTree<>();
+		tree.insert('a');
+		tree.insert('b');
+		tree.insert('c'); // rebalance happens here
+		Assertions.assertEquals(2, tree.height());
+	}
+
+	@Test
+	void rightRebalancePreservesOrder() {
+		AVLTree<Character> tree = new AVLTree<>();
+		tree.insert('c');
+		tree.insert('b');
+		tree.insert('a'); // rebalance happens here
+		Assertions.assertEquals(2, tree.height());
+		Assertions.assertEquals("a\nb\nc\n", String.valueOf(tree)); // calls toString
+	}
 }
