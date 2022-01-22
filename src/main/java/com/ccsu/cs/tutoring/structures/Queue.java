@@ -4,10 +4,10 @@ import com.ccsu.cs.tutoring.interfaces.QueueInterface;
 import com.ccsu.cs.tutoring.nodes.Node;
 
 /**
- * Queue ADT using linked Node. Currently supports integers only.
+ * Queue ADT using linked Nodes. Currently supports integers only.
  * @author Travis Hopkins
- * @version 1.0.0
- * @see {@link https://www.baeldung.com/java-queue}
+ * @version 1.0.1
+ * @see <a href="https://www.baeldung.com/java-queue">Queue ADT tutorial</a>
  */
 public class Queue<T> implements QueueInterface<T> {
 	private Node<T> front;

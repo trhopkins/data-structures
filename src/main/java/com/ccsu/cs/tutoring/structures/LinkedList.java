@@ -6,8 +6,8 @@ import com.ccsu.cs.tutoring.nodes.Node;
 /**
  * LinkedList ADT using integer Nodes.
  * @author Travis Hopkins
- * @version 1.0.0
- * @see {@link https://www.baeldung.com/java-linkedlist}
+ * @version 1.0.1
+ * @see <a href="https://www.baeldung.com/java-linkedlist">Linked List ADT tutorial</a>
  */
 public class LinkedList<T> implements LinkedListInterface<T> {
 	// car = head, cdr = head.getNext() for you LISPers out there ;)

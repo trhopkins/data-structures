@@ -6,8 +6,8 @@ import com.ccsu.cs.tutoring.nodes.Node;
 /**
  * Stack ADT using linked integer Nodes.
  * @author Travis Hopkins
- * @version 1.0.0
- * @see {@link https://www.baeldung.com/java-stack}
+ * @version 1.0.1
+ * @see <a href="https://www.baeldung.com/java-stack">Stack ADT tutorial</a>
  */
 public class Stack<T> implements StackInterface<T> {
 	private Node<T> top; // reference to only accessible value

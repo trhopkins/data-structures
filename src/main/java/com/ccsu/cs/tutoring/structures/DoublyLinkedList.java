@@ -7,8 +7,8 @@ import com.ccsu.cs.tutoring.nodes.DoublyLinkedNode;
  * Doubly Linked List ADT using Doubly Linked integer Nodes.
  * @author Travis Hopkins
  * @author Roland Van Duine
- * @version 1.0.2
- * @see {@link https://www.baeldung.com/cs/linked-list-data-structure}
+ * @version 1.0.3
+ * @see <a href="https://www.baeldung.com/cs/linked-list-data-structure">Doubly-Linked List ADT tutorial</a>
  */
 public class DoublyLinkedList<T> implements DoublyLinkedListInterface<T> {
 	private DoublyLinkedNode<T> head;
