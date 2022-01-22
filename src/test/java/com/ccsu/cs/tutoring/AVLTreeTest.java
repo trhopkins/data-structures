@@ -1,6 +1,7 @@
 package com.ccsu.cs.tutoring;
 
 import com.ccsu.cs.tutoring.structures.AVLTree;
+import com.ccsu.cs.tutoring.structures.BinaryTree;
 import org.junit.jupiter.api.Test; // for Test annotations
 import org.junit.jupiter.api.Assertions; // for tests themselves
 
@@ -51,19 +52,30 @@ public class AVLTreeTest {
 	@Test
 	void leftRebalancePreservesOrder() {
 		AVLTree<Character> tree = new AVLTree<>();
+		BinaryTree<Character> binTree = new BinaryTree<>();
 		tree.insert('a');
 		tree.insert('b');
 		tree.insert('c'); // rebalance happens here
+		binTree.insert('c');
+		binTree.insert('b');
+		binTree.insert('a'); // no rebalance occurs
 		Assertions.assertEquals(2, tree.height());
+		Assertions.assertEquals(3, binTree.height());
+		Assertions.assertEquals(String.valueOf(tree), String.valueOf(binTree)); // default toStrings are in-order traversals
 	}
 
 	@Test
 	void rightRebalancePreservesOrder() {
 		AVLTree<Character> tree = new AVLTree<>();
+		BinaryTree<Character> binTree = new BinaryTree<>();
 		tree.insert('c');
 		tree.insert('b');
 		tree.insert('a'); // rebalance happens here
+		binTree.insert('c');
+		binTree.insert('b');
+		binTree.insert('a'); // no rebalance occurs
 		Assertions.assertEquals(2, tree.height());
-		Assertions.assertEquals("a\nb\nc\n", String.valueOf(tree)); // calls toString
+		Assertions.assertEquals(3, binTree.height());
+		Assertions.assertEquals(String.valueOf(tree), String.valueOf(binTree)); // default toStrings are in-order traversals
 	}
 }
