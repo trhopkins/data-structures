@@ -6,8 +6,8 @@ import com.ccsu.cs.tutoring.nodes.Node;
 /**
  * CircularLinkedList ADT using linked integer Nodes.
  * @author Travis Hopkins
- * @version 1.0.0
- * @see {@link https://www.baeldung.com/java-circular-linked-list}
+ * @version 1.0.1
+ * @see <a href="https://www.baeldung.com/java-circular-linked-list">Circular Linked List ADT tutorial</a>
  */
 public class CircularLinkedList<T> implements LinkedListInterface<T> {
 	private Node<T> tail;
@@ -117,13 +117,7 @@ public class CircularLinkedList<T> implements LinkedListInterface<T> {
 
 	/** Print each item in this CLL. */
 	public void traverse() {
-		if (!empty()) {
-			Node<T> current = tail;
-			do {
-				current = current.getNext();
-				System.out.println(current);
-			} while (current != tail);
-		}
+		System.out.print(this);
 	}
 
 	/**

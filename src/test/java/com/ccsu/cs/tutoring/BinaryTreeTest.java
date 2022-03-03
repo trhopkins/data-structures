@@ -45,4 +45,17 @@ public class BinaryTreeTest {
 		tree.insert(3);
 		Assertions.assertEquals("1\n3\n5\n7\n9\n", tree.toString()); // in-order result
 	}
+
+	@Test
+	void heightIncreasesWhenTreeGrowsTaller() {
+		BinaryTree<Integer> tree = new BinaryTree<>();
+		tree.insert(5); // height = 1
+		tree.insert(7); // height = 2
+		tree.insert(1); // height = 2
+		tree.insert(9); // height = 3
+		tree.insert(3); // height = 3
+		Assertions.assertEquals(3, tree.height());
+		tree.insert(4); // height = 4
+		Assertions.assertEquals(4, tree.height());
+	}
 }
