@@ -4,7 +4,7 @@ import com.ccsu.cs.tutoring.nodes.AVLNode;
 
 /**
  * @author Travis Hopkins
- * @version 0.0.2
+ * @version 1.0.0
  * @see <a href="https://www.baeldung.com/java-avl-trees"> AVL Tree ADT tutorial</a>
  */
 public class AVLTree<T extends Comparable<T>> {
