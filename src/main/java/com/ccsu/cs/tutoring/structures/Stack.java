@@ -35,8 +35,8 @@ public class Stack<T> implements StackInterface<T> {
 	 * @return data of top
 	 */
 	public T pop() { // O(1)
-		T topValue = top.getData();
-		top = top.getNext();
+		T topValue = top.data;
+		top = top.next;
 		size--; // consider throwing an error for an empty stack?
 		return topValue;
 	}
@@ -46,7 +46,7 @@ public class Stack<T> implements StackInterface<T> {
 	 * @return data of top
 	 */
 	public T ontop() { // O(1)
-		return top.getData();
+		return top.data;
 	}
 
 	/**

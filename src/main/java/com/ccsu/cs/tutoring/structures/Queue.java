@@ -30,7 +30,7 @@ public class Queue<T> implements QueueInterface<T> {
 		if (empty()) {
 			front = newNode;
 		} else {
-			rear.setNext(newNode);
+			rear.next = newNode;
 		}
 		rear = newNode;
 		size++;
@@ -41,8 +41,8 @@ public class Queue<T> implements QueueInterface<T> {
 	 * @return front Node's data
 	 */
 	public T dequeue() { // O(1)
-		T frontValue = front.getData();
-		front = front.getNext();
+		T frontValue = front.data;
+		front = front.next;
 		size--; // placed before empty() due to size check
 		if (empty()) {
 			rear = null;
@@ -55,7 +55,7 @@ public class Queue<T> implements QueueInterface<T> {
 	 * @return front Node's data
 	 */
 	public T front() { // O(1)
-		return front.getData();
+		return front.data;
 	}
 
 	/**
@@ -95,7 +95,7 @@ public class Queue<T> implements QueueInterface<T> {
 		String info = "";
 		while (current != null) {
 			info += current.toString() + "\n";
-			current = current.getNext();
+			current = current.next;
 		}
 		return info;
 	}

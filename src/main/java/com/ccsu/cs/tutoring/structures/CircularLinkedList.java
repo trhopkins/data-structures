@@ -27,10 +27,10 @@ public class CircularLinkedList<T> implements LinkedListInterface<T> {
 		if (empty()) {
 			Node<T> newNode = new Node<T>(data, null);
 			tail = newNode;
-			newNode.setNext(newNode);
+			newNode.next = newNode;
 		} else if (!full()) {
-			Node<T> newNode = new Node<T>(data, tail.getNext());
-			tail.setNext(newNode);
+			Node<T> newNode = new Node<T>(data, tail.next);
+			tail.next = newNode;
 		} // else throw error for being too large?
 	}
 
@@ -42,10 +42,10 @@ public class CircularLinkedList<T> implements LinkedListInterface<T> {
 		if (empty()) {
 			Node<T> newNode = new Node<T>(data, null);
 			tail = newNode;
-			newNode.setNext(newNode);
+			newNode.next = newNode;
 		} else {
-			Node<T> newNode = new Node<T>(data, tail.getNext());
-			tail.setNext(newNode);
+			Node<T> newNode = new Node<T>(data, tail.next);
+			tail.next = newNode;
 			tail = newNode;
 		}
 	}
@@ -56,7 +56,7 @@ public class CircularLinkedList<T> implements LinkedListInterface<T> {
 			if (size() == 1) {
 				tail = null;
 			} else {
-				tail.setNext(tail.getNext().getNext());
+				tail.next = tail.next.next;
 			}
 		}
 	}
@@ -70,12 +70,12 @@ public class CircularLinkedList<T> implements LinkedListInterface<T> {
 		if (tail == null) {
 			return false;
 		} else {
-			Node<T> current = tail.getNext();
+			Node<T> current = tail.next;
 			do {
-				if (current.getData() == key) {
+				if (current.data == key) {
 					return true;
 				}
-				current.setNext(current.getNext());
+				current.next = current.next;
 			} while (current != tail);
 			return false;
 		}
@@ -92,7 +92,7 @@ public class CircularLinkedList<T> implements LinkedListInterface<T> {
 			Node<T> current = tail;
 			int size = 0;
 			do {
-				current = current.getNext();
+				current = current.next;
 				size++;
 			} while (current != tail);
 			return size;
@@ -128,7 +128,7 @@ public class CircularLinkedList<T> implements LinkedListInterface<T> {
 		if (!empty()) {
 			Node<T> current = tail;
 			do {
-				current = current.getNext();
+				current = current.next;
 				info += String.valueOf(current) + "\n";
 			} while (current != tail);
 		} else {
