@@ -248,7 +248,7 @@ public class AVLTree<T extends Comparable<T>> {
 	private String recursiveToString(AVLNode<T> root, String info) { // accumulator-passing style
 		if (root != null) {
 			recursiveToString(root.left, info); // in-order traversal
-			this.info += root.toString() + "\n";
+			this.info += root + "\n";
 			recursiveToString(root.right, "");
 		}
 		return info;
