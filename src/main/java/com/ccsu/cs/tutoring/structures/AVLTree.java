@@ -32,10 +32,10 @@ public class AVLTree<T extends Comparable<T>> {
 	private AVLNode<T> recursiveInsert(AVLNode<T> node, T key) {
 		if (node == null) {
 			return new AVLNode<T>(key, null, null);
-		} else if (node.getData().compareTo(key) > 0) {
-			node.setLeft(recursiveInsert(node.getLeft(), key));
-		} else if (node.getData().compareTo(key) < 0) {
-			node.setRight(recursiveInsert(node.getRight(), key));
+		} else if (node.data.compareTo(key) > 0) {
+			node.left = recursiveInsert(node.left, key);
+		} else if (node.data.compareTo(key) < 0) {
+			node.right = recursiveInsert(node.right, key);
 		} else {
 			throw new RuntimeException("duplicate Key!"); // write own exception?
 		}
@@ -60,17 +60,17 @@ public class AVLTree<T extends Comparable<T>> {
 	private AVLNode<T> recursiveDelete(AVLNode<T> node, T key) {
 		if (node == null) {
 			return node;
-		} else if (node.getData().compareTo(key) > 0) {
-			node.setLeft(recursiveDelete(node.getLeft(), key));
-		} else if (node.getData().compareTo(key) < 0) {
-			node.setRight(recursiveDelete(node.getRight(), key));
+		} else if (node.data.compareTo(key) > 0) {
+			node.left = recursiveDelete(node.left, key);
+		} else if (node.data.compareTo(key) < 0) {
+			node.right = recursiveDelete(node.right, key);
 		} else {
-			if (node.getLeft() == null || node.getRight() == null) {
-				node = (node.getLeft() == null) ? node.getRight() : node.getLeft();
+			if (node.left == null || node.right == null) {
+				node = (node.left == null) ? node.right : node.left;
 			} else {
-				AVLNode<T> mostLeftChild = mostLeftChild(node.getRight());
-				node.setData(mostLeftChild.getData());
-				node.setRight(recursiveDelete(node.getRight(), node.getData()));
+				AVLNode<T> mostLeftChild = mostLeftChild(node.right);
+				node.data = mostLeftChild.data;
+				node.right = recursiveDelete(node.right, node.data);
 			}
 		}
 		if (node != null) {
@@ -86,8 +86,8 @@ public class AVLTree<T extends Comparable<T>> {
 	 */
 	private AVLNode<T> mostLeftChild(AVLNode<T> node) {
 		AVLNode<T> current = node;
-		while (current.getLeft() != null) {
-			current = current.getLeft();
+		while (current.left != null) {
+			current = current.left;
 		}
 		return current;
 	}
@@ -120,7 +120,7 @@ public class AVLTree<T extends Comparable<T>> {
 	 * @return number of levels in the tree
 	 */
 	public int height() {
-		return root == null ? 0 : root.getHeight();
+		return root == null ? 0 : root.height;
 	}
 
 	/**
@@ -133,17 +133,17 @@ public class AVLTree<T extends Comparable<T>> {
 		updateHeight(z);
 		int balance = getBalance(z);
 		if (balance > 1) {
-			if (height(z.getRight().getRight()) > height(z.getRight().getLeft())) {
+			if (height(z.right.right) > height(z.right.left)) {
 				z = rotateLeft(z);
 			} else {
-				z.setRight(rotateRight(z.getRight()));
+				z.right = rotateRight(z.right);
 				z = rotateLeft(z);
 			}
 		} else if (balance < -1) {
-			if (height(z.getLeft().getLeft()) > height(z.getLeft().getRight())) {
+			if (height(z.left.left) > height(z.left.right)) {
 				z = rotateRight(z);
 			} else {
-				z.setLeft(rotateLeft(z.getLeft()));
+				z.left = rotateLeft(z.left);
 				z = rotateRight(z);
 			}
 		}
@@ -156,10 +156,10 @@ public class AVLTree<T extends Comparable<T>> {
 	 * @return restructured subtree
 	 */
 	private AVLNode<T> rotateRight(AVLNode<T> y) {
-		AVLNode<T> x = y.getLeft();
-		AVLNode<T> z = x.getRight();
-		x.setRight(y);
-		y.setLeft(z);
+		AVLNode<T> x = y.left;
+		AVLNode<T> z = x.right;
+		x.right = y;
+		y.left = z;
 		updateHeight(y);
 		updateHeight(x);
 		return x;
@@ -171,10 +171,10 @@ public class AVLTree<T extends Comparable<T>> {
 	 * @return restructured subtree
 	 */
 	private AVLNode<T> rotateLeft(AVLNode<T> y) {
-		AVLNode<T> x = y.getRight();
-		AVLNode<T> z = x.getLeft();
-		x.setLeft(y);
-		y.setRight(z);
+		AVLNode<T> x = y.right;
+		AVLNode<T> z = x.left;
+		x.left = y;
+		y.right = z;
 		updateHeight(y);
 		updateHeight(x);
 		return x;
@@ -185,7 +185,7 @@ public class AVLTree<T extends Comparable<T>> {
 	 * @param n Node to recount height of
 	 */
 	private void updateHeight(AVLNode<T> n) {
-		n.setHeight(1 + Math.max(height(n.getLeft()), height(n.getRight())));
+		n.height = 1 + Math.max(height(n.left), height(n.right));
 	}
 
 	/**
@@ -194,7 +194,7 @@ public class AVLTree<T extends Comparable<T>> {
 	 * @return Node's height
 	 */
 	private int height(AVLNode<T> n) {
-		return n == null ? 0 : n.getHeight();
+		return n == null ? 0 : n.height;
 	}
 
 	/**
@@ -203,7 +203,7 @@ public class AVLTree<T extends Comparable<T>> {
 	 * @return <-1 for left imbalance, -1/0/1 for balanced, >1 for right imbalance
 	 */
 	public int getBalance(AVLNode<T> n) {
-		return (n == null) ? 0 : height(n.getRight()) - height(n.getLeft());
+		return (n == null) ? 0 : height(n.right) - height(n.left);
 	}
 
 	/**
@@ -214,10 +214,10 @@ public class AVLTree<T extends Comparable<T>> {
 	public AVLNode<T> find(T key) {
 		AVLNode<T> current = root;
 		while (current != null) {
-			if (current.getData() == key) {
+			if (current.data == key) {
 			   break;
 			}
-			current = current.getData().compareTo(key) < 0 ? current.getRight() : current.getLeft();
+			current = current.data.compareTo(key) < 0 ? current.right : current.left;
 		}
 		return current;
 	}
@@ -247,9 +247,9 @@ public class AVLTree<T extends Comparable<T>> {
 	 */
 	private String recursiveToString(AVLNode<T> root, String info) { // accumulator-passing style
 		if (root != null) {
-			recursiveToString(root.getLeft(), info); // in-order traversal
+			recursiveToString(root.left, info); // in-order traversal
 			this.info += root.toString() + "\n";
-			recursiveToString(root.getRight(), "");
+			recursiveToString(root.right, "");
 		}
 		return info;
 	}
