@@ -2,7 +2,7 @@
 
 Sample implementations for CS 253.
 
-data structures implemented thus far:
+data structures completed so far:
 
 * LinkedList
 * Circularly Linked List
@@ -10,3 +10,4 @@ data structures implemented thus far:
 * Stack
 * Queue
 * Binary Tree
+* AVL Tree
