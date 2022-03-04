@@ -6,13 +6,13 @@ import com.ccsu.cs.tutoring.interfaces.BinaryTreeInterface;
 /**
  * Binary tree containing integer nodes.
  * @author Travis Hopkins
- * @version 1.0.1
- * @see {@link https://www.baeldung.com/java-binary-tree}
+ * @version 1.0.2
+ * @see <a href="https://www.baeldung.com/java-binary-tree">Binary Search Tree ADT tutorial</a>
  */
 public class BinaryTree<T extends Comparable<T>> implements BinaryTreeInterface<T> {
 	private BinaryTreeNode<T> root;
 	private int size;
-	private String info = ""; // required for recursiveToString. Should find a way which doesn't require global variables
+	private String info = ""; // find a way which doesn't require global variables baka
 
 	/** Empty Binary Tree constructor. */
 	public BinaryTree() {
