@@ -7,8 +7,8 @@ package com.ccsu.cs.tutoring.nodes;
  * @version 1.0.0
  */
 public class Node<T> {
-	T data; // consider Generics here
-	Node<T> next;
+	public T data; // consider Generics here
+	public Node<T> next;
 
 	/**
 	 * Constructor. Currently not overloaded by anything.
@@ -17,34 +17,6 @@ public class Node<T> {
 	 */
 	public Node(T data, Node<T> next) {
 		this.data = data;
-		this.next = next;
-	}
-
-	/**
-	 * @return Node data
-	 */
-	public T getData() { // O(1)
-		return data;
-	}
-
-	/**
-	 * @return following Node
-	 */
-	public Node<T> getNext() { // O(1)
-		return next;
-	}
-
-	/**
-	 * @param data to assign this Node
-	 */
-	public void setData(T data) { // O(1)
-		this.data = data;
-	}
-
-	/**
-	 * @param next Node to point to
-	 */
-	public void setNext(Node<T> next) { // O(1)
 		this.next = next;
 	}
 

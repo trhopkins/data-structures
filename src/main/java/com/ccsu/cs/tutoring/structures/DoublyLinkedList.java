@@ -21,7 +21,7 @@ public class DoublyLinkedList<T> implements DoublyLinkedListInterface<T> {
 	public DoublyLinkedList() {
 		head = new DoublyLinkedNode<T>(null, tail, null);
 		tail = new DoublyLinkedNode<T>(null, null, head);
-		head.setNext(tail); // was previously null
+		head.next = tail; // was previously null
 		size = 0;
 	}
 
@@ -55,10 +55,10 @@ public class DoublyLinkedList<T> implements DoublyLinkedListInterface<T> {
 	 */
 	public void insertFirst(T data) { // O(1)
 		if (!full()) {
-			DoublyLinkedNode<T> oldFirst = head.getNext();
+			DoublyLinkedNode<T> oldFirst = head.next;
 			DoublyLinkedNode<T> newFirst = new DoublyLinkedNode<>(data, oldFirst, head);
-			oldFirst.setPrev(newFirst);
-			head.setNext(newFirst);
+			oldFirst.prev = newFirst;
+			head.next = newFirst;
 			size++;
 		}
 	}
@@ -69,10 +69,10 @@ public class DoublyLinkedList<T> implements DoublyLinkedListInterface<T> {
 	 * @param data to add, replacing previous tail
 	 */
 	public void insertLast(T data) { // 0(1)
-		DoublyLinkedNode<T> oldLast = tail.getPrev();
+		DoublyLinkedNode<T> oldLast = tail.prev;
 		DoublyLinkedNode<T> newLast = new DoublyLinkedNode<T>(data, tail, oldLast);
-		oldLast.setNext(newLast);
-		tail.setPrev(newLast);
+		oldLast.next = newLast;
+		tail.prev = newLast;
 		size++;
 	}
 
@@ -82,10 +82,10 @@ public class DoublyLinkedList<T> implements DoublyLinkedListInterface<T> {
 	 * Updates the next node's previous node
 	 */
 	public void deleteFirst() { // O(1)
-		DoublyLinkedNode<T> oldFirst = head.getNext();
-		DoublyLinkedNode<T> newFirst = oldFirst.getNext();
-		newFirst.setPrev(head);
-		head.setNext(newFirst);
+		DoublyLinkedNode<T> oldFirst = head.next;
+		DoublyLinkedNode<T> newFirst = oldFirst.next;
+		newFirst.prev = head;
+		head.next = newFirst;
 		size--;
 	}
 
@@ -95,10 +95,10 @@ public class DoublyLinkedList<T> implements DoublyLinkedListInterface<T> {
 	 * Updates the previous node's next node
 	 */
 	public void deleteLast() { // O(1)
-		DoublyLinkedNode<T> oldLast = tail.getPrev();
-		DoublyLinkedNode<T> newLast = oldLast.getPrev();
-		tail.setPrev(newLast);
-		newLast.setNext(tail);
+		DoublyLinkedNode<T> oldLast = tail.prev;
+		DoublyLinkedNode<T> newLast = oldLast.prev;
+		tail.prev = newLast;
+		newLast.next = tail;
 		size--;
 	}
 
@@ -111,7 +111,7 @@ public class DoublyLinkedList<T> implements DoublyLinkedListInterface<T> {
 			//System.out.println("Trying to access empty node");
 			return null; //default would be 0
 		}
-		return head.getNext().getData();
+		return head.next.data;
 	}
 
 	/**
@@ -123,7 +123,7 @@ public class DoublyLinkedList<T> implements DoublyLinkedListInterface<T> {
 			//System.out.println("Trying to access empty node");
 			return null; //default would be 0
 		}
-		return tail.getPrev().getData();
+		return tail.prev.data;
 	}
 
 	/**
@@ -132,12 +132,12 @@ public class DoublyLinkedList<T> implements DoublyLinkedListInterface<T> {
 	 * @return true if key data is found
 	 */
 	public boolean search(T key) { // 0(n)
-		DoublyLinkedNode<T> current = head.getNext();
+		DoublyLinkedNode<T> current = head.next;
 		while (current != tail) {
-			if (current.getData() == key) {
+			if (current.data == key) {
 				return true;
 			} else {
-				current = current.getNext();
+				current = current.next;
 			}
 		}
 		return false;
@@ -152,11 +152,11 @@ public class DoublyLinkedList<T> implements DoublyLinkedListInterface<T> {
 	 * @return info about each Node on its own line.
 	 */
 	public String toString() { // O(n)
-		DoublyLinkedNode<T> current = head.getNext();
+		DoublyLinkedNode<T> current = head.next;
 		String info = "";
 		while (current != tail) {
 			info += current.toString() + "\n";
-			current = current.getNext();
+			current = current.next;
 		}
 		return info;
 	}

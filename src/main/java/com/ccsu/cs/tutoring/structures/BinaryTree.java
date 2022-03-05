@@ -48,10 +48,10 @@ public class BinaryTree<T extends Comparable<T>> implements BinaryTreeInterface<
 		if (root == null) { // add leaf
 			return new BinaryTreeNode<T>(data, null, null);
 		} else { // walk further down
-			if (data.compareTo(root.getData()) < 0) { // go left
-				root.setLeft(recursiveInsert(root.getLeft(), data));
+			if (data.compareTo(root.data) < 0) { // go left
+				root.left = recursiveInsert(root.left, data);
 			} else { // go right (allows duplicates)
-				root.setRight(recursiveInsert(root.getRight(), data));
+				root.right = recursiveInsert(root.right, data);
 			}
 		}
 		return root; // new subtree
@@ -77,12 +77,12 @@ public class BinaryTree<T extends Comparable<T>> implements BinaryTreeInterface<
 	private BinaryTreeNode<T> recursiveDelete(BinaryTreeNode<T> root, T key) {
         if (root == null) { // went past leaf
             return null;
-        } else if (key.compareTo(root.getData()) == 0) { // found it
+        } else if (key.compareTo(root.data) == 0) { // found it
             return replaceWithDescendent(root);
-        } else if (key.compareTo(root.getData()) < 0) { // try left
-			root.setLeft(recursiveDelete(root.getLeft(), key));
+        } else if (key.compareTo(root.data) < 0) { // try left
+			root.left = recursiveDelete(root.left, key);
         } else { // try right
-			root.setRight(recursiveDelete(root.getRight(), key));
+			root.right = recursiveDelete(root.right, key);
 		}
 		return root;
     }
@@ -94,16 +94,16 @@ public class BinaryTree<T extends Comparable<T>> implements BinaryTreeInterface<
 	 */
 	private BinaryTreeNode<T> replaceWithDescendent(BinaryTreeNode<T> root) {
 		// Case 1: no children
-		if (root.getLeft() == null && root.getRight() == null) {
+		if (root.left == null && root.right == null) {
 		    return null;
-		} else if (root.getRight() == null) { // Case 2: 1 child
-		    return root.getLeft();
-		} else if (root.getLeft() == null) {
-		    return root.getRight();
+		} else if (root.right == null) { // Case 2: 1 child
+		    return root.left;
+		} else if (root.left == null) {
+		    return root.right;
 		} else { // Case 3: 2 children
-			T smallestValue = findSmallestDescendent(root.getRight());
-			root.setData(smallestValue);
-			root.setRight(recursiveDelete(root.getRight(), smallestValue));
+			T smallestValue = findSmallestDescendent(root.right);
+			root.data = smallestValue;
+			root.right = recursiveDelete(root.right, smallestValue);
 			return root;
 		}
 	}
@@ -114,7 +114,7 @@ public class BinaryTree<T extends Comparable<T>> implements BinaryTreeInterface<
 	 * @return value of the smallest descendent Node
 	 */
 	private T findSmallestDescendent(BinaryTreeNode<T> root) {
-		return root.getLeft() == null ? root.getData() : findSmallestDescendent(root.getRight());
+		return root.left == null ? root.data : findSmallestDescendent(root.right);
 	}
 
 	/** Empty the tree. */
@@ -165,13 +165,13 @@ public class BinaryTree<T extends Comparable<T>> implements BinaryTreeInterface<
 	private boolean recursiveSearch(BinaryTreeNode<T> root, T key) {
 		if (root == null) { // leaf
 			return false;
-		} else if (root.getData() == key) { // match!
+		} else if (root.data == key) { // match!
 			return true;
 		} else { // try children
-			if (key.compareTo(root.getData()) < 0) { // left?
-				return recursiveSearch(root.getLeft(), key);
+			if (key.compareTo(root.data) < 0) { // left?
+				return recursiveSearch(root.left, key);
 			} else { // right?
-				return recursiveSearch(root.getRight(), key);
+				return recursiveSearch(root.right, key);
 			}
 		}
 	}
@@ -195,13 +195,13 @@ public class BinaryTree<T extends Comparable<T>> implements BinaryTreeInterface<
 	private BinaryTreeNode<T> recursiveFind(BinaryTreeNode<T> root, T key) { // identical to search
 		if (root == null) { // leaf
 			return null;
-		} else if (root.getData() == key) { // match!
+		} else if (root.data == key) { // match!
 			return root;
 		} else { // try children
-			if (key.compareTo(root.getData()) < 0) { // left?
-				return recursiveFind(root.getLeft(), key);
+			if (key.compareTo(root.data) < 0) { // left?
+				return recursiveFind(root.left, key);
 			} else { // right?
-				return recursiveFind(root.getRight(), key);
+				return recursiveFind(root.right, key);
 			}
 		}
 	}
@@ -220,15 +220,15 @@ public class BinaryTree<T extends Comparable<T>> implements BinaryTreeInterface<
 	 * @return number of levels in this tree
 	 */
 	public int recursiveHeight(BinaryTreeNode<T> root) {
-		if (root.getLeft() == null && root.getRight() == null) { // leaf
+		if (root.left == null && root.right == null) { // leaf
 			return 1;
-		} else if (root.getLeft() == null) { // one child
-			return 1 + recursiveHeight(root.getRight());
-		} else if (root.getRight() == null) { // one child
-			return 1 + recursiveHeight(root.getLeft());
+		} else if (root.left == null) { // one child
+			return 1 + recursiveHeight(root.right);
+		} else if (root.right == null) { // one child
+			return 1 + recursiveHeight(root.left);
 		} else { // choose larger of two children
-			int leftHeight = recursiveHeight(root.getLeft());
-			int rightHeight = recursiveHeight(root.getRight());
+			int leftHeight = recursiveHeight(root.left);
+			int rightHeight = recursiveHeight(root.right);
 			return leftHeight > rightHeight ? 1 + leftHeight : 1 + rightHeight; // feelin' cute, might delete later
 		}
 	}
@@ -261,11 +261,11 @@ public class BinaryTree<T extends Comparable<T>> implements BinaryTreeInterface<
 			while (!toVisit.empty()) {
 				BinaryTreeNode<T> current = toVisit.dequeue();
 				System.out.println(current);
-				if (current.getLeft() != null) {
-					toVisit.enqueue(current.getLeft());
+				if (current.left != null) {
+					toVisit.enqueue(current.left);
 				}
-				if (current.getRight() != null) {
-					toVisit.enqueue(current.getRight());
+				if (current.right != null) {
+					toVisit.enqueue(current.right);
 				}
 			}
 		}
@@ -274,9 +274,9 @@ public class BinaryTree<T extends Comparable<T>> implements BinaryTreeInterface<
 	/** Print all Nodes in left-root-right order. */
 	private void recursiveInOrderTraverse(BinaryTreeNode<T> root) {
 		if (root != null) {
-			recursiveInOrderTraverse(root.getLeft());
+			recursiveInOrderTraverse(root.left);
 			System.out.println(root);
-			recursiveInOrderTraverse(root.getRight());
+			recursiveInOrderTraverse(root.right);
 		} // else {System.out.println("null");}
 	}
 
@@ -284,16 +284,16 @@ public class BinaryTree<T extends Comparable<T>> implements BinaryTreeInterface<
 	private void recursivePreOrderTraverse(BinaryTreeNode<T> root) {
 		if (root != null) {
 			System.out.println(root);
-			recursivePreOrderTraverse(root.getLeft());
-			recursivePreOrderTraverse(root.getRight());
+			recursivePreOrderTraverse(root.left);
+			recursivePreOrderTraverse(root.right);
 		} // else {System.out.println("null");}
 	}
 
 	/** Print all Nodes in left-right-root order. */
 	private void recursivePostOrderTraverse(BinaryTreeNode<T> root) {
 		if (root != null) {
-			recursivePostOrderTraverse(root.getLeft());
-			recursivePostOrderTraverse(root.getRight());
+			recursivePostOrderTraverse(root.left);
+			recursivePostOrderTraverse(root.right);
 			System.out.println(root);
 		} // else {System.out.println("null");}
 	}
@@ -311,9 +311,9 @@ public class BinaryTree<T extends Comparable<T>> implements BinaryTreeInterface<
 	 */
 	private String recursiveToString(BinaryTreeNode<T> root) { // find a way that doesn't require global variables?
 		if (root != null) {
-			recursiveToString(root.getLeft()); // in-order traversal
-			info += root.toString() + "\n";
-			recursiveToString(root.getRight());
+			recursiveToString(root.left); // in-order traversal
+			info += root + "\n";
+			recursiveToString(root.right);
 		}
 		return info;
 	}

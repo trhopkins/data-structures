@@ -10,7 +10,7 @@ import com.ccsu.cs.tutoring.nodes.Node;
  * @see <a href="https://www.baeldung.com/java-linkedlist">Linked List ADT tutorial</a>
  */
 public class LinkedList<T> implements LinkedListInterface<T> {
-	// car = head, cdr = head.getNext() for you LISPers out there ;)
+	// car = head, cdr = head.next for you LISPers out there ;)
 	private Node<T> head;
 
 	/** Empty LinkedList Constructor. */
@@ -31,7 +31,7 @@ public class LinkedList<T> implements LinkedListInterface<T> {
 	/** Removes/reassigns head Node. */
 	public void deleteFirst() { // O(1)
 		if (!empty()) {
-			head = head.getNext();
+			head = head.next;
 		}
 	}
 
@@ -43,10 +43,10 @@ public class LinkedList<T> implements LinkedListInterface<T> {
 	public boolean search(T key) { // O(n)
 		Node<T> current = head;
 		while (current != null) {
-			if (current.getData() == key) {
+			if (current.data == key) {
 				return true;
 			} else {
-				current = current.getNext();
+				current = current.next;
 			}
 		}
 		return false; // reached end of LinkedList
@@ -60,7 +60,7 @@ public class LinkedList<T> implements LinkedListInterface<T> {
 		int size = 0;
 		Node<T> current = head;
 		while (current != null) {
-			current = current.getNext();
+			current = current.next;
 			size++;
 		}
 		return size;
@@ -93,7 +93,7 @@ public class LinkedList<T> implements LinkedListInterface<T> {
 		String info = "";
 		while (current != null) {
 			info += current.toString() + "\n";
-			current = current.getNext();
+			current = current.next;
 		}
 		return info;
 	}
