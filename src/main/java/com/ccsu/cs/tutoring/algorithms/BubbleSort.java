@@ -8,19 +8,19 @@ public class BubbleSort<T extends Comparable<T>> {
 		boolean swapped = true; // shortcut to speed up bubble
 		T tmp; // for swaps
 		for (int i = 1; i < a.length; i++) {
-			if (swapped) {
+			if (swapped) { // avoid redundancy
 				swapped = false;
-				for (int j = 0; j < a.length - i; j++) { // bubble up
+				for (int j = 0; j < a.length - i; j++) {
 					comparisons++;
-					if (a[j].compareTo(a[j+1]) > 0) {
+					if (a[j].compareTo(a[j+1]) > 0) { // bubble up
 						exchanges++;
 						tmp = a[j];
 						a[j] = a[j+1];
 						a[j+1] = tmp;
-						swapped = true;
+						swapped = true; // new place to swap up to
 					}
 				}
-			} else { // skip redundant comparisons
+			} else { // redundant, we've been here before
 				break;
 			}
 		}
