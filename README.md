@@ -15,3 +15,4 @@ Data structures implemented so far:
 Algorithms implemented so far:
 
 * Bubble Sort
+* Insertion Sort
