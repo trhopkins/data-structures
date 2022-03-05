@@ -75,17 +75,17 @@ public class BinaryTree<T extends Comparable<T>> implements BinaryTreeInterface<
 	 * @return subtree starting with current Node's L/R child to replace current one
 	 */
 	private BinaryTreeNode<T> recursiveDelete(BinaryTreeNode<T> root, T key) {
-        if (root == null) { // went past leaf
-            return null;
-        } else if (key.compareTo(root.data) == 0) { // found it
-            return replaceWithDescendent(root);
-        } else if (key.compareTo(root.data) < 0) { // try left
+		if (root == null) { // went past leaf
+			return null;
+		} else if (key.compareTo(root.data) == 0) { // found it
+			return replaceWithDescendent(root);
+		} else if (key.compareTo(root.data) < 0) { // try left
 			root.left = recursiveDelete(root.left, key);
-        } else { // try right
+		} else { // try right
 			root.right = recursiveDelete(root.right, key);
 		}
 		return root;
-    }
+	}
 
 	/**
 	 * Once a node has been located, walk down the tree until a replacement is found.
@@ -95,11 +95,11 @@ public class BinaryTree<T extends Comparable<T>> implements BinaryTreeInterface<
 	private BinaryTreeNode<T> replaceWithDescendent(BinaryTreeNode<T> root) {
 		// Case 1: no children
 		if (root.left == null && root.right == null) {
-		    return null;
+			return null;
 		} else if (root.right == null) { // Case 2: 1 child
-		    return root.left;
+			return root.left;
 		} else if (root.left == null) {
-		    return root.right;
+			return root.right;
 		} else { // Case 3: 2 children
 			T smallestValue = findSmallestDescendent(root.right);
 			root.data = smallestValue;

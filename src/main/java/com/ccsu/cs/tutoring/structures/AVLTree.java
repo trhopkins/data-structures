@@ -52,7 +52,7 @@ public class AVLTree<T extends Comparable<T>> {
 	}
 
 	/**
-	 * Recursively search down the AVL tree until the key is found, and delete that Node. 
+	 * Recursively search down the AVL tree until the key is found, and delete that Node.
 	 * @param node current subtree root to search down
 	 * @param key element to search for and delete
 	 * @return subtree with the key Node removed
@@ -215,7 +215,7 @@ public class AVLTree<T extends Comparable<T>> {
 		AVLNode<T> current = root;
 		while (current != null) {
 			if (current.data == key) {
-			   break;
+				break;
 			}
 			current = current.data.compareTo(key) < 0 ? current.right : current.left;
 		}

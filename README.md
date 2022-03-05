@@ -1,8 +1,8 @@
 # Data Structures and Algorithms notes
 
-Sample implementations for CS 253.
+Sample code for CS 253.
 
-data structures completed so far:
+Data structures implemented so far:
 
 * LinkedList
 * Circularly Linked List
@@ -11,3 +11,7 @@ data structures completed so far:
 * Queue
 * Binary Tree
 * AVL Tree
+
+Algorithms implemented so far:
+
+* Bubble Sort
