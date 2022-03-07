@@ -1,8 +1,8 @@
 package com.ccsu.cs.tutoring.algorithms;
 
 public class BubbleSort<T extends Comparable<T>> {
-	public int comparisons;
-	public int exchanges;
+	public int comparisons = 0;
+	public int exchanges = 0;
 
 	public T[] sort(T[] a) {
 		boolean swapped = true; // shortcut to speed up bubble

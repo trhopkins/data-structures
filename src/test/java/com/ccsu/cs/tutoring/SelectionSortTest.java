@@ -1,7 +1,6 @@
 package com.ccsu.cs.tutoring;
 
 import com.ccsu.cs.tutoring.algorithms.SelectionSort;
-
 import org.junit.jupiter.api.Test; // for test annotations
 import org.junit.jupiter.api.Assertions; // for tests themselves
 
