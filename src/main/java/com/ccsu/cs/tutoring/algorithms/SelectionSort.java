@@ -1,9 +1,20 @@
 package com.ccsu.cs.tutoring.algorithms;
 
+/**
+ * Selection Sort algorithm.
+ * @author Travis Reid Hopkins
+ * @version 1.0.1
+ */
 public class SelectionSort<T extends Comparable<T>> {
 	public int comparisons = 0;
 	public int exchanges = 0;
 
+	/**
+	 * For each element, find the smallest unsorted element and swap
+	 * them.
+	 * @param a array to be sorted
+	 * @return sorted array
+	 */
 	public T[] sort(T[] a) {
 		T tmp;
 		int min;
@@ -15,10 +26,10 @@ public class SelectionSort<T extends Comparable<T>> {
 				}
 				comparisons++;
 			}
+			exchanges++;
 			tmp = a[min];
 			a[min] = a[i];
 			a[i] = tmp;
-			exchanges++;
 		}
 		return a;
 	}

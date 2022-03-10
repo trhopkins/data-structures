@@ -1,9 +1,20 @@
 package com.ccsu.cs.tutoring.algorithms;
 
+/**
+ * Insertion Sort algorithm.
+ * @author Travis Reid Hopkins
+ * @version 1.0.1
+ */
 public class InsertionSort<T extends Comparable<T>> {
 	public int comparisons = 0;
 	public int exchanges = 0;
 
+	/**
+	 * For each unsorted element, place it into the sorted area in the
+	 * correct location, starting from the bottom.
+	 * @param a array to be sorted
+	 * @return sorted array
+	 */
 	public T[] sort(T[] a) {
 		T tmp; // for swapping
 		int j; // for shifting sorted elements upward
