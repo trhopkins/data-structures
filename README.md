@@ -16,3 +16,5 @@ Algorithms implemented so far:
 
 * Bubble Sort
 * Insertion Sort
+* Selection Sort
+* Quick Sort
