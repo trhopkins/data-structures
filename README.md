@@ -13,3 +13,5 @@ data structures completed so far:
 * Queue
 * Binary Tree
 * AVL Tree
+
+Testing push functionality
